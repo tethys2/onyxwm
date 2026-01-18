@@ -8,9 +8,12 @@
 // Already declared in main, needed to handle xcb stuff
 extern xcb_connection_t *dpy;
 
+//block needed for config
 #include <X11/keysym.h>
 #include <xcb/xcb_keysyms.h>
 #include "wm.h"
+#include "types.h"
+#include "actions.h"
 #include "config.h"
 
 // spawn program
