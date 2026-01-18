@@ -1,0 +1,6 @@
+# OnyxWM
+
+A minimal window manager for X11 written with xcb. Strikes a balance between a 
+manual and dynamic tiler.
+
+Well, that is what I want to say. Currently has basically no features.
