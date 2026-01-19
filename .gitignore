@@ -24,3 +24,5 @@ onyxwm
 .vscode/
 .idea/
 
+# Build directory
+build
