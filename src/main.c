@@ -5,6 +5,13 @@
 #include "wm.h"
 #include "events.h"
 
+//block needed for config
+#include <X11/keysym.h>
+#include "types.h"
+#include "actions.h"
+#include "config/keybindings.h"
+
+
 //connection to xcb
 xcb_connection_t *dpy;
 //xcb screen
@@ -20,8 +27,6 @@ int main(void) {
 		fprintf(stderr, "Failed to connect to X server\n");
 		return 1;
 	} 
-	printf("hi");
-
 	//get setup info
 	const xcb_setup_t *setup = xcb_get_setup(dpy);
 	// Iterator over available screens
@@ -53,6 +58,16 @@ int main(void) {
 		xcb_disconnect(dpy);
 		return 1;
 	}
+	// grab keybindings
+	int keys_length = sizeof(keys) / sizeof(keys[0]);
+	for (int i =  0; i < keys_length; i++){
+		xcb_keycode_t *keycode = getKeycode(keys[i].keysym);
+		if(keycode != NULL){
+			xcb_grab_key(dpy, 1, scre->root, keys[i].mod, *keycode, XCB_GRAB_MODE_ASYNC, XCB_GRAB_MODE_ASYNC);
+		}
+	}
+
+
 	// Flush requests to the X server to ensure they are sent
 	xcb_flush(dpy);
 	printf("onxyWM is running");

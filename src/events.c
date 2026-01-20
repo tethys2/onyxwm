@@ -80,3 +80,12 @@ static xcb_keysym_t getKeysym(xcb_keycode_t keycode){
 	xcb_key_symbols_free(keysyms);
 	return keysym;
 }
+xcb_keycode_t *getKeycode(xcb_keysym_t keysym){
+	// Creates mapping table for keysyms
+	xcb_key_symbols_t *keysyms = xcb_key_symbols_alloc(dpy);
+	// convert keysym if mapping table exists
+	xcb_keycode_t *keycode = (keysyms ? xcb_key_symbols_get_keycode(keysyms, keysym) : NULL);
+	// mapping table needs to be freed since we allocated it
+	xcb_key_symbols_free(keysyms);
+	return keycode;
+}
