@@ -1,4 +1,5 @@
 #include <xcb/xcb.h>      // XCB core header
+#include <xcb/xcb_keysyms.h> // XCB helper for key symbol handling
 #include <stdio.h>        // printf, fprintf
 #include <stdlib.h>       // exit, free
 #include <unistd.h>       // fork, execlp
@@ -47,4 +48,23 @@ void autostart() {
 	}
 }
 
-
+// converts a xcb_keycode_t to a xcb_keysym_t
+xcb_keysym_t getKeysym(xcb_keycode_t keycode){
+	// Creates mapping table for keysyms
+	xcb_key_symbols_t *keysyms = xcb_key_symbols_alloc(dpy);
+	// convert keysym if mapping table exists
+	xcb_keysym_t keysym = (keysyms ? xcb_key_symbols_get_keysym(keysyms, keycode, 0) : 0);
+	// mapping table needs to be freed since we allocated it
+	xcb_key_symbols_free(keysyms);
+	return keysym;
+}
+// converts a xcb_keysym_t to xcb_keycode_t 
+xcb_keycode_t *getKeycode(xcb_keysym_t keysym){
+	// Creates mapping table for keysyms
+	xcb_key_symbols_t *keysyms = xcb_key_symbols_alloc(dpy);
+	// convert keycode if mapping table exists
+	xcb_keycode_t *keycode = (keysyms ? xcb_key_symbols_get_keycode(keysyms, keysym) : NULL);
+	// mapping table needs to be freed since we allocated it
+	xcb_key_symbols_free(keysyms);
+	return keycode;
+}

@@ -1,4 +1,3 @@
-#include <xcb/xcb_keysyms.h> // XCB helper for key symbol handling
 #include <xcb/xproto.h>   // X protocol types and constants (MapRequest, KeyPress, etc.)
 #include <xcb/xcb_event.h> // Event helpers
 #include <stdio.h>        // printf, fprintf
@@ -22,8 +21,6 @@ typedef void (*event_handler_t)(xcb_generic_event_t *);
 //function declaration
 static void handleKeyPress(xcb_generic_event_t *ev);
 static void handleMapRequest(xcb_generic_event_t *ev);
-static xcb_keysym_t getKeysym(xcb_keycode_t keycode);
-
 
 // declared in main.c, needed to do xcb stuff
 extern xcb_connection_t *dpy;
@@ -71,21 +68,4 @@ static void handleMapRequest(xcb_generic_event_t *ev){
 	// Flush to make sure the window is displayed
 	xcb_flush(dpy);
 }
-static xcb_keysym_t getKeysym(xcb_keycode_t keycode){
-	// Creates mapping table for keysyms
-	xcb_key_symbols_t *keysyms = xcb_key_symbols_alloc(dpy);
-	// convert keysym if mapping table exists
-	xcb_keysym_t keysym = (keysyms ? xcb_key_symbols_get_keysym(keysyms, keycode, 0) : 0);
-	// mapping table needs to be freed since we allocated it
-	xcb_key_symbols_free(keysyms);
-	return keysym;
-}
-xcb_keycode_t *getKeycode(xcb_keysym_t keysym){
-	// Creates mapping table for keysyms
-	xcb_key_symbols_t *keysyms = xcb_key_symbols_alloc(dpy);
-	// convert keysym if mapping table exists
-	xcb_keycode_t *keycode = (keysyms ? xcb_key_symbols_get_keycode(keysyms, keysym) : NULL);
-	// mapping table needs to be freed since we allocated it
-	xcb_key_symbols_free(keysyms);
-	return keycode;
-}
+
