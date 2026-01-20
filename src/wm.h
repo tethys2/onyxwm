@@ -1,5 +1,6 @@
 #ifndef WM_H
 #define WM_H
+#include <xcb/xcb_keysyms.h>
 
 void spawn(char **program);
 void exitWM(int ret);

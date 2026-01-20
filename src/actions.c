@@ -1,5 +1,4 @@
 // Functions meant for keybinding
-
 #include "wm.h"
 #include "actions.h"
 
