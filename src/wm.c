@@ -1,14 +1,13 @@
 #include <xcb/xcb.h>      // XCB core header
 #include <xcb/xcb_keysyms.h> // XCB helper for key symbol handling
-#include <stdio.h>        // printf, fprintf
 #include <stdlib.h>       // exit, free
 #include <unistd.h>       // fork, execlp
 #include <sys/types.h>    // pid_t
 
-
 // Already declared in main, needed to handle xcb stuff
 extern xcb_connection_t *dpy;
 
+#include "debug.h"
 #include "config/autostart.h"
 
 // spawn program
@@ -30,10 +29,10 @@ void exitWM(int ret){
 		dpy = NULL;
 	}
 	if(!ret){
-		printf("Exiting onyxWM successfully\n");
+		log_msg("Exiting onyxWM successfully\n");
 	}
 	else{
-		printf("Exiting onyxWM with error\n");
+		log_msg("Exiting onyxWM with error\n");
 	}
 	//exit program with code from argument
 	exit(ret);

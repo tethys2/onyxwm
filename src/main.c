@@ -1,9 +1,9 @@
 #include <xcb/xcb.h>      // XCB core header
-#include <stdio.h>        // printf, fprintf
-#include <stdlib.h>       // exit, free
+#include <stdlib.h>       // free
 
 #include "wm.h"
 #include "events.h"
+#include "debug.h"
 
 //block needed for config
 #include <X11/keysym.h>
@@ -24,9 +24,10 @@ int main(void) {
 	dpy = xcb_connect(NULL, &screen_number);
 	// Check if the connection has an error
 	if (xcb_connection_has_error(dpy)) {
-		fprintf(stderr, "Failed to connect to X server\n");
+		log_err("Failed to connect to X server\n");
 		return 1;
 	} 
+    
 	//get setup info
 	const xcb_setup_t *setup = xcb_get_setup(dpy);
 	// Iterator over available screens
@@ -53,7 +54,7 @@ int main(void) {
 	// Check if the request failed (i.e., another WM is running)
 	xcb_generic_error_t *err = xcb_request_check(dpy, cookie);
 	if (err) {
-		fprintf(stderr, "Another window manager is already running\n");
+		log_err("Another window manager is already running\n");
 		free(err);
 		xcb_disconnect(dpy);
 		return 1;
@@ -70,7 +71,7 @@ int main(void) {
 
 	// Flush requests to the X server to ensure they are sent
 	xcb_flush(dpy);
-	printf("onxyWM is running\n");
+	log_msg("onxyWM is running\n");
 	
 	// start autostart apps
 	autostart();
