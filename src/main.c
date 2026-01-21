@@ -15,7 +15,7 @@
 //connection to xcb
 xcb_connection_t *dpy;
 //xcb screen
-static xcb_screen_t *scre;
+xcb_screen_t *scre;
 
 int main(void) {
 	int ret = 0;

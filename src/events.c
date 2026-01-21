@@ -65,5 +65,7 @@ static void handleMapRequest(xcb_generic_event_t *ev){
 	xcb_map_window(dpy, e->window);
 	// Flush to make sure the window is displayed
 	xcb_flush(dpy);
+	// Give new window focus
+	focusWin(e->window);
 }
 

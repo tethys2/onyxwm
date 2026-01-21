@@ -6,6 +6,8 @@
 
 // Already declared in main, needed to handle xcb stuff
 extern xcb_connection_t *dpy;
+// Already declared in main, current screen
+extern xcb_screen_t *scre;
 
 #include "debug.h"
 #include "config/autostart.h"
@@ -44,6 +46,12 @@ void autostart() {
 	for(int i = 0; autostart_list[i][0] != NULL; i++){
 		// spawn the program in the current index
 		spawn(autostart_list[i]);
+	}
+}
+
+void focusWin(xcb_drawable_t win) {
+	if ((win != 0) && (win != scre->root)){
+		xcb_set_input_focus(dpy, XCB_INPUT_FOCUS_POINTER_ROOT, win, XCB_CURRENT_TIME);
 	}
 }
 
