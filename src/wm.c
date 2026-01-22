@@ -10,6 +10,8 @@
 extern xcb_connection_t *dpy;
 // Already declared in main, current screen
 extern xcb_screen_t *scre;
+// from events.c, needed to alter window attributes (eg. for focus)
+extern uint32_t geometry_buf[];
 
 #include "config/autostart.h"
 
@@ -50,7 +52,12 @@ void autostart() {
 	}
 }
 
+// make the passed in window focused
 void focusWin(xcb_drawable_t win) {
+	// raise window so that it can be focused
+	geometry_buf[0] = XCB_STACK_MODE_ABOVE;
+	xcb_configure_window(dpy, win, XCB_CONFIG_WINDOW_STACK_MODE, geometry_buf);
+	// give the window input focus if window is valid and not root
 	if ((win != 0) && (win != scre->root)){
 		xcb_set_input_focus(dpy, XCB_INPUT_FOCUS_POINTER_ROOT, win, XCB_CURRENT_TIME);
 	}

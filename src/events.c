@@ -24,6 +24,8 @@ static void handleMapRequest(xcb_generic_event_t *ev);
 
 // declared in main.c, needed to do xcb stuff
 extern xcb_connection_t *dpy;
+// needed to handle window movement, focus
+uint32_t geometry_buf[5];
 //define an array of event handlers; the xcb event code has a corresponding entry for the function
 static event_handler_t event_handlers[HANDLER_COUNT] = {
 	[XCB_KEY_PRESS]      = handleKeyPress,
