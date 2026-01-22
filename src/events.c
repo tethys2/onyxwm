@@ -11,6 +11,9 @@
 #include "actions.h"
 #include "config/keybindings.h"
 
+// note: temp
+//#include <stdlib.h>
+
 
 //definitions
 //length for the event_handlers array
@@ -21,6 +24,7 @@ typedef void (*event_handler_t)(xcb_generic_event_t *);
 //function declaration
 static void handleKeyPress(xcb_generic_event_t *ev);
 static void handleMapRequest(xcb_generic_event_t *ev);
+static void handleMapNotify(xcb_generic_event_t *ev);
 
 // declared in main.c, needed to do xcb stuff
 extern xcb_connection_t *dpy;
@@ -29,7 +33,8 @@ uint32_t geometry_buf[5];
 //define an array of event handlers; the xcb event code has a corresponding entry for the function
 static event_handler_t event_handlers[HANDLER_COUNT] = {
 	[XCB_KEY_PRESS]      = handleKeyPress,
-	[XCB_MAP_REQUEST]   = handleMapRequest,
+	[XCB_MAP_REQUEST]    = handleMapRequest,
+	[XCB_MAP_NOTIFY]     = handleMapNotify,
 };
 
 // Takes in an event and sends the event to a handler function from event_handlers
@@ -69,7 +74,11 @@ static void handleMapRequest(xcb_generic_event_t *ev){
 	xcb_map_window(dpy, e->window);
 	// Flush to make sure the window is displayed
 	xcb_flush(dpy);
-	// Give new window focus
-	focusWin(e->window);
 }
-
+static void handleMapNotify(xcb_generic_event_t *ev){
+	// cast the generic event to a map notify event
+	xcb_map_notify_event_t *e = (xcb_map_notify_event_t *)ev;
+	// focus the window which notified 
+	focusWin(e-> window);
+	xcb_flush(dpy);
+}
