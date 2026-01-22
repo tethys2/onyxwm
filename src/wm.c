@@ -52,12 +52,13 @@ void autostart() {
 	}
 }
 
-// make the passed in window focused
-void focusWin(xcb_drawable_t win) {
-	// raise window so that it can be focused
+// raises a window
+void raiseWin(xcb_drawable_t win) {
 	geometry_buf[0] = XCB_STACK_MODE_ABOVE;
 	xcb_configure_window(dpy, win, XCB_CONFIG_WINDOW_STACK_MODE, geometry_buf);
-	// give the window input focus if window is valid and not root
+}
+// give a window input focus if possible
+void focusInput(xcb_drawable_t win) {
 	if ((win != 0) && (win != scre->root)){
 		xcb_set_input_focus(dpy, XCB_INPUT_FOCUS_POINTER_ROOT, win, XCB_CURRENT_TIME);
 	}

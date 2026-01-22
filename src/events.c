@@ -75,10 +75,12 @@ static void handleMapRequest(xcb_generic_event_t *ev){
 	// Flush to make sure the window is displayed
 	xcb_flush(dpy);
 }
+// handle when a window is done being mapped to the screen
 static void handleMapNotify(xcb_generic_event_t *ev){
 	// cast the generic event to a map notify event
 	xcb_map_notify_event_t *e = (xcb_map_notify_event_t *)ev;
-	// focus the window which notified 
-	focusWin(e-> window);
+	// focus the window which notified
+	raiseWin(e-> window);
+	focusInput(e-> window);
 	xcb_flush(dpy);
 }
