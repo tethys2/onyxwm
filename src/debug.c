@@ -45,38 +45,38 @@ bool openLog(){
 	return LOG_FILE != NULL;
 };
 // file log
-void flog(char *type, const char *fmt,va_list args){
+void flog(char *type, const char *msg, va_list args){
 	// if open fails, return, logging to files is optional
 	if(!openLog()) return;
-	char msg[42];
+	char stamp[42];
 	// get formated time
-	strftime(msg, sizeof(msg), "%T", localtime(&(time_t){time(NULL)}));
+	strftime(stamp, sizeof(stamp), "%T", localtime(&(time_t){time(NULL)}));
 	// print timestamp
 	fprintf(LOG_FILE,"[%s]", msg);
 	// print type of message, e.g. MSG or ERR
 	fprintf(LOG_FILE, " %s ", type);
 	//print the message 
-	vfprintf(LOG_FILE, fmt, args); 
+	vfprintf(LOG_FILE, msg, args); 
 }
 
 // see debug.h
-void logMessage(const char *fmt, int n, ...){
+void logMessage(const char *msg, int n, ...){
 	va_list args;
 	va_start(args, n);
 	// print to stdout
-	printf(fmt, args);
+	printf(msg, args);
 	//log to file with type MSG
-	flog("MSG", fmt, args);
+	flog("MSG", msg, args);
 	va_end(args);
 }
 
 // see debug.h
-void logError(const char *fmt, int n, ...){
+void logError(const char *msg, int n, ...){
 	va_list args;
 	va_start(args, n);
 	// print to stderr
-	fprintf(stderr, fmt, args);
+	fprintf(stderr, msg, args);
 	// log to file with type ERR
-	flog("ERR", fmt, args);
+	flog("ERR", msg, args);
 	va_end(args);
 }
