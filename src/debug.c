@@ -1,4 +1,3 @@
-#include "debug.h"
 #include <stdarg.h> //variadic funcs
 #include <stdio.h> //printf() fprintf() fopen()
 #include <time.h> //time stamps
@@ -6,6 +5,9 @@
 #include <sys/stat.h> //mkdir() 
 #include <stdlib.h> //getenv()
 #include <string.h> //strcat() strcpy()
+#include <stdbool.h> //bool type
+
+#include "debug.h"
 
 static FILE *LOG_FILE = NULL; // Log file handle
 
