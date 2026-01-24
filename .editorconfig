@@ -1,0 +1,11 @@
+root = true
+
+# Unix line endings and utf-8
+[*]
+end_of_line = lf
+charset = utf-8
+
+# C files
+[**.{c,h}]
+indent_style = tabs 
+trim_trailing_whitespace = true
