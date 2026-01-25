@@ -7,5 +7,5 @@ charset = utf-8
 
 # C files
 [**.{c,h}]
-indent_style = tabs 
+indent_style = tab
 trim_trailing_whitespace = true

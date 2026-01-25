@@ -1,5 +1,7 @@
 # Compiler, default is gcc
 CC = gcc
+# C version
+VER = -std=gnu99
 # Compiler flags, enable verbose warnings and optimize for speed
 CFLAGS = -Wall -Wextra -O2
 # Libraries, xcb and xcb keysyms helper
@@ -14,10 +16,10 @@ TARGET := onyxwm
 all: $(TARGET)
 # target onyxwm
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(VER) $(LIBS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(VER) -c $< -o $@
 
 clean:
 	rm -f $(OBJS) $(TARGET)
