@@ -1,3 +1,8 @@
+/**
+ * @file events.c
+ * @brief Handles events
+ */
+
 #include <xcb/xproto.h>   // X protocol types and constants (MapRequest, KeyPress, etc.)
 #include <xcb/xcb_event.h> // Event helpers
 #include <stdio.h>        // printf, fprintf
@@ -11,10 +16,6 @@
 #include "types.h"
 #include "actions.h"
 #include "config/keybindings.h"
-
-// note: temp
-//#include <stdlib.h>
-
 
 //definitions
 //length for the event_handlers array
@@ -38,7 +39,6 @@ static event_handler_t event_handlers[HANDLER_COUNT] = {
 	[XCB_MAP_NOTIFY]     = handleMapNotify,
 };
 
-// Takes in an event and sends the event to a handler function from event_handlers
 void handleEvent(xcb_generic_event_t *ev){
 	//get response type and get rid of extra bit
 	uint8_t type = ev->response_type & ~0x80;
@@ -52,7 +52,11 @@ void handleEvent(xcb_generic_event_t *ev){
 	}
 }
 
-//handle key press event idk
+/**
+ * @brief Calls corresponding keybind in keys
+ *
+ * @param ev A keypress event
+ */
 static void handleKeyPress(xcb_generic_event_t *ev){
 	//typcast event
 	xcb_key_press_event_t *e = (xcb_key_press_event_t *)ev;
@@ -67,7 +71,11 @@ static void handleKeyPress(xcb_generic_event_t *ev){
 	}
 }
 
-//Handle a windows request to be mapped to the screen
+/**
+ * @brief Maps a window to the screen
+ *
+ * @param ev A map request event
+ */
 static void handleMapRequest(xcb_generic_event_t *ev){
 	// Cast the generic event to a map request event
 	xcb_map_request_event_t *e = (xcb_map_request_event_t *)ev;
@@ -76,7 +84,11 @@ static void handleMapRequest(xcb_generic_event_t *ev){
 	// Flush to make sure the window is displayed
 	xcb_flush(dpy);
 }
-// handle when a window is done being mapped to the screen
+/**
+ * @brief Give newly mapped windows focus
+ *
+ * @param ev A map notify event
+ */
 static void handleMapNotify(xcb_generic_event_t *ev){
 	// cast the generic event to a map notify event
 	xcb_map_notify_event_t *e = (xcb_map_notify_event_t *)ev;
