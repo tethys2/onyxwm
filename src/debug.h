@@ -20,3 +20,5 @@ void logMessage(const char *msg, int n, ...);
  * @param ... Substitutions
  */
 void logError(const char *msg, int n, ...);
+
+/* vim:set ft=c: */

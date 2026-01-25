@@ -1,6 +1,6 @@
 /**
  * @file actions.c
- * @brief Wrapper functions for keybinding
+ * @sa actions.h
  */
 
 #include "wm.h"

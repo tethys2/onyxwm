@@ -1,4 +1,7 @@
-// actions.h
+/**
+ * @file actions.h
+ * @brief Wrapper functions for keybinding
+ */
 #ifndef ACTIONS_H
 #define ACTIONS_H
 

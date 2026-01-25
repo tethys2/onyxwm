@@ -1,3 +1,7 @@
+/**
+ * @file main.c
+ * @brief main program file
+ */
 #include <xcb/xcb.h>      // XCB core header
 #include <stdlib.h>       // exit, free
 
@@ -10,7 +14,7 @@
 #include "types.h"
 #include "actions.h"
 #include "config/keybindings.h"
-
+#include "cmdline.h"
 
 //connection to xcb
 xcb_connection_t *dpy;
@@ -19,8 +23,15 @@ xcb_screen_t *scre;
 // buffer for attributes (eg. for xcb_change_window_attributes_checked)
 uint32_t attribute_buf[2];
 
-int main(void) {
-	int ret = 0;
+int main(int argc, char *argv[]) {
+	int ret = parseArguments(argc,argv);
+	// see documentation for parseArguments, TL;DR 1=quit -1=error
+	if( ret == 1 ){
+		return 0;
+	} else if (ret < 0){ // in case more errors are added
+		return ret;
+	};
+
 	int screen_number; // Will be set to the screen number we're using
 	// Connect to the default display
 	dpy = xcb_connect(NULL, &screen_number);
@@ -28,7 +39,7 @@ int main(void) {
 	if (xcb_connection_has_error(dpy)) {
 		logError("Failed to connect to X server\n", 0);
 		return 1;
-	} 
+	}
 	//get setup info
 	const xcb_setup_t *setup = xcb_get_setup(dpy);
 	// Iterator over available screens
@@ -73,7 +84,7 @@ int main(void) {
 	xcb_grab_button(dpy, 0, scre->root, XCB_EVENT_MASK_BUTTON_PRESS | XCB_EVENT_MASK_BUTTON_RELEASE, XCB_GRAB_MODE_ASYNC, XCB_GRAB_MODE_ASYNC, scre->root, XCB_NONE, 1, MOD);
 	xcb_grab_button(dpy, 0, scre->root, XCB_EVENT_MASK_BUTTON_PRESS | XCB_EVENT_MASK_BUTTON_RELEASE, XCB_GRAB_MODE_ASYNC, XCB_GRAB_MODE_ASYNC, scre->root, XCB_NONE, 3, MOD);
 	logMessage("onxyWM is running\n", 0);
-	
+
 	// start autostart apps
 	autostart();
 

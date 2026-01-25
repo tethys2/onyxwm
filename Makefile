@@ -2,8 +2,10 @@
 CC = gcc
 # C version
 VER = -std=gnu99
+# Compiler Define
+DEFINES = -DVERSION=\"0.1.5\" #SemVer
 # Compiler flags, enable verbose warnings and optimize for speed
-CFLAGS = -Wall -Wextra -O2
+CFLAGS = -Wall -Wextra -O2 $(DEFINES)
 # Libraries, xcb and xcb keysyms helper
 LIBS = -lxcb -lxcb-keysyms
 # Files to be compiled
