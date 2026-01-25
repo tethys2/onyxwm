@@ -16,8 +16,11 @@ extern uint32_t geometry_buf[];
 
 #include "config/autostart.h"
 
-// spawn program
-// char **program is an array of arguments for the program ending in null
+/**
+ * @brief Spawn a program by forking and then becoming the program
+ *
+ * @param program A list of arguments starting with the program name/location and ending in NULL
+ */
 void spawn(char **program) {
 	if (fork() == 0) { //fork and continue if the program is the child
 		// Child process
@@ -27,7 +30,11 @@ void spawn(char **program) {
 	}
 	// Parent process does nothing; child runs the program
 }
-// kill the window manager, exiting with the inputed return value
+/**
+ * @brief Clean up the program and exit
+ *
+ * @param ret What to exit with: 0 for success, 1 for failure
+ */
 void exitWM(int ret){
 	//disconnect
 	if(dpy){
@@ -44,7 +51,9 @@ void exitWM(int ret){
 	exit(ret);
 }
 
-// starts the apps in autostart_list
+/**
+ * @brief Spawn all programs in autostart_list from config/autostart.h
+ */
 void autostart() {
 	// iterate over the autostart list in config until NULL
 	for(int i = 0; autostart_list[i][0] != NULL; i++){
@@ -53,19 +62,33 @@ void autostart() {
 	}
 }
 
-// raises a window
+/**
+ * @brief Raise a window by setting its XCB_CONFIG_WINDOW_STACK_MODE to XCB_STACK_MODE_ABOVE
+ *
+ * @param win The window to be raised
+ */
 void raiseWin(xcb_drawable_t win) {
 	geometry_buf[0] = XCB_STACK_MODE_ABOVE;
 	xcb_configure_window(dpy, win, XCB_CONFIG_WINDOW_STACK_MODE, geometry_buf);
 }
-// give a window input focus if possible
+
+/**
+ * @brief Give a window input focus if not root or undefined
+ *
+ * @param win The window to give focus
+ */
 void focusInput(xcb_drawable_t win) {
 	if ((win != 0) && (win != scre->root)){
 		xcb_set_input_focus(dpy, XCB_INPUT_FOCUS_POINTER_ROOT, win, XCB_CURRENT_TIME);
 	}
 }
 
-// converts a xcb_keycode_t to a xcb_keysym_t
+/**
+ * @brief Convert an xcb_keycode_t into an xcb_keysym_t by creating and destroying a key symbols table
+ *
+ * @param keycode The keycode to be converted
+ * @return The keysym
+ */
 xcb_keysym_t getKeysym(xcb_keycode_t keycode){
 	// Creates mapping table for keysyms
 	xcb_key_symbols_t *keysyms = xcb_key_symbols_alloc(dpy);
@@ -75,7 +98,13 @@ xcb_keysym_t getKeysym(xcb_keycode_t keycode){
 	xcb_key_symbols_free(keysyms);
 	return keysym;
 }
-// converts a xcb_keysym_t to xcb_keycode_t 
+
+/**
+ * @brief Convert an xcb_keysym_t into an xcb_keycode_t by creating and destroying a key symbols table
+ *
+ * @param keysym The keysymbol to be converted
+ * @return The keycode
+ */
 xcb_keycode_t *getKeycode(xcb_keysym_t keysym){
 	// Creates mapping table for keysyms
 	xcb_key_symbols_t *keysyms = xcb_key_symbols_alloc(dpy);

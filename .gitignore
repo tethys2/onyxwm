@@ -24,3 +24,6 @@ onyxwm
 .vscode/
 .idea/
 
+# Doxygen output
+doxygen
+*.html
