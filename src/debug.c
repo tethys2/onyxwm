@@ -1,8 +1,13 @@
+/**
+ * @file debug.c
+ * @brief Provides functions for debuging including logging to a file
+ */
+
 #include <stdarg.h> //variadic funcs
 #include <stdio.h> //printf() fprintf() fopen()
 #include <time.h> //time stamps
 #include <fcntl.h> // open() openat()
-#include <sys/stat.h> //mkdir() 
+#include <sys/stat.h> //mkdir()
 #include <stdlib.h> //getenv()
 #include <string.h> //strcat() strcpy()
 #include <stdbool.h> //bool type
@@ -11,15 +16,22 @@
 
 static FILE *LOG_FILE = NULL; // Log file handle
 
-// opens the log file
-// returns whether the opening was succesful
+/**
+ * @brief Opens a log file called onyxwm.log
+ *
+ * Will not create ./local/share, but will create ./local/share/onyxwm
+ * Uses LOG_FILE to store log file location
+ *
+ * @return Whether the file successfully opened
+ *
+ */
 bool openLog(){
-	if(LOG_FILE != (FILE*)NULL){ 
+	if(LOG_FILE != (FILE*)NULL){
 		// if not null then the handle has already been opened
 		return true;
 	}
 	// directory fd to the home directory
-	int home_dir = open(getenv("HOME"), O_DIRECTORY | O_RDONLY); 
+	int home_dir = open(getenv("HOME"), O_DIRECTORY | O_RDONLY);
 	// if .local doesn't exist, it shouldn't be created
 	// if .local/share doesn't exits, it shouldn't be created
 	// this checks for both
@@ -31,7 +43,7 @@ bool openLog(){
 	if(openat(home_dir, ".local/share/onyxwm", O_RDONLY| O_DIRECTORY) < 0){
 		printf("~/.local/share/onyxwm does not exist, creating\n");
 		if(mkdirat(home_dir, ".local/share/onyxwm", 0777) < 0){
-			fprintf(stderr,"Couldn't create ~/.local/share/onyxwm\n");	
+			fprintf(stderr,"Couldn't create ~/.local/share/onyxwm\n");
 			return false;
 		}
 	}
@@ -44,7 +56,16 @@ bool openLog(){
 	// if fopen fails LOG_FILE will be null
 	return LOG_FILE != NULL;
 };
-// file log
+
+/**
+ * @brief Log a message to the log file
+ *
+ * Adds a timestamp, message type, then message with subsitutions
+ *
+ * @param type Type of log message (eg. ERR or MSG)
+ * @param msg Message to be logged
+ * @param args Arguments (subsitutions) for message
+ */
 void flog(char *type, const char *msg, va_list args){
 	// if open fails, return, logging to files is optional
 	if(!openLog()) return;
@@ -55,8 +76,8 @@ void flog(char *type, const char *msg, va_list args){
 	fprintf(LOG_FILE,"[%s]", stamp);
 	// print type of message, e.g. MSG or ERR
 	fprintf(LOG_FILE, " %s: ", type);
-	//print the message 
-	vfprintf(LOG_FILE, msg, args); 
+	//print the message
+	vfprintf(LOG_FILE, msg, args);
 }
 
 // see debug.h
