@@ -15,9 +15,9 @@
  *
  * @returns result of parsing the arguments
  * @retval 0 success
- * @retval 1 non-fatal error (unknown argument)
- * @retval -1 fatal error (bad syntax)
+ * @retval 1 program should quit with status 0 (--help, --version, etc.)
+ * @retval -1 fatal error (bad syntax or unknown argument)
  */
 int parseArguments(int argc, char *argv[]);
 
-/* vim:set ft=c: */
+/* vim:set ft=c:set syn=c.doxygen: */
