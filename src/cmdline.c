@@ -9,18 +9,18 @@
 /**
  * @brief prints a help message to stdout
  */
-void printHelp(){
-	printf("OnyxWM\n");
-	printf("\nUSAGE: onyxwm [options]\n");
-	printf("\nOPTIONS:\n");
-	printf("--help                   print this message\n");
-	printf("--version                print version information\n");
-}
-
 void printVersion(){
 	// VERSION defined by build system
 	printf("OnyxWM %s\n",VERSION);
 };
+void printHelp(){
+	printVersion();
+	printf("\nUSAGE: onyxwm [options]\n");
+	printf("\nOPTIONS:\n");
+	printf("--help                   print this message\n");
+	printf("--version                print version information\n");
+};
+
 
 // see cmdline.h
 int parseArguments(int argc, char* argv[]){
