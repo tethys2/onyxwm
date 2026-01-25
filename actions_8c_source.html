@@ -100,34 +100,33 @@ $(function(){initNavTree('actions_8c_source.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">actions.c</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="actions_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Functions meant for keybinding</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="wm_8h.html">wm.h</a>&quot;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="actions_8h.html">actions.h</a>&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// wrapper function for exitWM</span></div>
-<div class="foldopen" id="foldopen00006" data-start="{" data-end="}">
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="actions_8c.html#ad4d1699b32a3fc326976f2288d785398">    6</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="actions_8c.html#ad4d1699b32a3fc326976f2288d785398">quit</a>(<span class="keyword">const</span> <a class="code hl_union" href="unionarg__t.html">arg_t</a> *arg){</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>        <span class="comment">// stop compiler from complaining about not using argument</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        (void)arg;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        <span class="comment">//exit without error</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        <a class="code hl_function" href="wm_8c.html#aa141ed4592ccda96eb82a00c53d1e2cc">exitWM</a>(0);</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>}</div>
+<a href="actions_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="wm_8h.html">wm.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="actions_8h.html">actions.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="actions_8c.html#ad4d1699b32a3fc326976f2288d785398">    9</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="actions_8c.html#ad4d1699b32a3fc326976f2288d785398">quit</a>(<span class="keyword">const</span> <a class="code hl_union" href="unionarg__t.html">arg_t</a> *arg){</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        <span class="comment">// stop compiler from complaining about not using argument</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        (void)arg;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="comment">//exit without error</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <a class="code hl_function" href="wm_8c.html#aa141ed4592ccda96eb82a00c53d1e2cc">exitWM</a>(0);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>}</div>
 </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">//wrapper for spawn</span></div>
-<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="actions_8c.html#ace6cdf23ba7bf7f199ccfb4b1cd274ef">   14</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="actions_8c.html#ace6cdf23ba7bf7f199ccfb4b1cd274ef">spawnAct</a>(<span class="keyword">const</span> <a class="code hl_union" href="unionarg__t.html">arg_t</a> *arg){</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="comment">// typecast void pointer and send to spawn</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <a class="code hl_function" href="wm_8c.html#a0c0d4d3a7387b827ac5adc4c3a55eaca">spawn</a>((<span class="keywordtype">char</span> **)arg-&gt;<a class="code hl_variable" href="unionarg__t.html#a580f5340262be53071b0fbbbfd515740">v</a>);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="actions_8c.html#ace6cdf23ba7bf7f199ccfb4b1cd274ef">   16</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="actions_8c.html#ace6cdf23ba7bf7f199ccfb4b1cd274ef">spawnAct</a>(<span class="keyword">const</span> <a class="code hl_union" href="unionarg__t.html">arg_t</a> *arg){</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="comment">// typecast void pointer and send to spawn</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <a class="code hl_function" href="wm_8c.html#a0c0d4d3a7387b827ac5adc4c3a55eaca">spawn</a>((<span class="keywordtype">char</span> **)arg-&gt;<a class="code hl_variable" href="unionarg__t.html#a580f5340262be53071b0fbbbfd515740">v</a>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>}</div>
 </div>
-<div class="ttc" id="aactions_8c_html_ace6cdf23ba7bf7f199ccfb4b1cd274ef"><div class="ttname"><a href="actions_8c.html#ace6cdf23ba7bf7f199ccfb4b1cd274ef">spawnAct</a></div><div class="ttdeci">void spawnAct(const arg_t *arg)</div><div class="ttdef"><b>Definition</b> <a href="#l00014">actions.c:14</a></div></div>
-<div class="ttc" id="aactions_8c_html_ad4d1699b32a3fc326976f2288d785398"><div class="ttname"><a href="actions_8c.html#ad4d1699b32a3fc326976f2288d785398">quit</a></div><div class="ttdeci">void quit(const arg_t *arg)</div><div class="ttdef"><b>Definition</b> <a href="#l00006">actions.c:6</a></div></div>
+<div class="ttc" id="aactions_8c_html_ace6cdf23ba7bf7f199ccfb4b1cd274ef"><div class="ttname"><a href="actions_8c.html#ace6cdf23ba7bf7f199ccfb4b1cd274ef">spawnAct</a></div><div class="ttdeci">void spawnAct(const arg_t *arg)</div><div class="ttdoc">Wrapper for spawn.</div><div class="ttdef"><b>Definition</b> <a href="#l00016">actions.c:16</a></div></div>
+<div class="ttc" id="aactions_8c_html_ad4d1699b32a3fc326976f2288d785398"><div class="ttname"><a href="actions_8c.html#ad4d1699b32a3fc326976f2288d785398">quit</a></div><div class="ttdeci">void quit(const arg_t *arg)</div><div class="ttdoc">Wrapper for exitWM.</div><div class="ttdef"><b>Definition</b> <a href="#l00009">actions.c:9</a></div></div>
 <div class="ttc" id="aactions_8h_html"><div class="ttname"><a href="actions_8h.html">actions.h</a></div></div>
 <div class="ttc" id="aunionarg__t_html"><div class="ttname"><a href="unionarg__t.html">arg_t</a></div><div class="ttdef"><b>Definition</b> <a href="types_8h_source.html#l00009">types.h:9</a></div></div>
 <div class="ttc" id="aunionarg__t_html_a580f5340262be53071b0fbbbfd515740"><div class="ttname"><a href="unionarg__t.html#a580f5340262be53071b0fbbbfd515740">arg_t::v</a></div><div class="ttdeci">const void * v</div><div class="ttdef"><b>Definition</b> <a href="types_8h_source.html#l00013">types.h:13</a></div></div>
 <div class="ttc" id="awm_8c_html_a0c0d4d3a7387b827ac5adc4c3a55eaca"><div class="ttname"><a href="wm_8c.html#a0c0d4d3a7387b827ac5adc4c3a55eaca">spawn</a></div><div class="ttdeci">void spawn(char **program)</div><div class="ttdoc">Spawn a program by forking and then becoming the program.</div><div class="ttdef"><b>Definition</b> <a href="wm_8c_source.html#l00024">wm.c:24</a></div></div>
-<div class="ttc" id="awm_8c_html_aa141ed4592ccda96eb82a00c53d1e2cc"><div class="ttname"><a href="wm_8c.html#aa141ed4592ccda96eb82a00c53d1e2cc">exitWM</a></div><div class="ttdeci">void exitWM(int ret)</div><div class="ttdoc">Clean up the program and exit.</div><div class="ttdef"><b>Definition</b> <a href="wm_8c_source.html#l00038">wm.c:38</a></div></div>
+<div class="ttc" id="awm_8c_html_aa141ed4592ccda96eb82a00c53d1e2cc"><div class="ttname"><a href="wm_8c.html#aa141ed4592ccda96eb82a00c53d1e2cc">exitWM</a></div><div class="ttdeci">void exitWM(int ret)</div><div class="ttdoc">Clean up the program and exit.</div><div class="ttdef"><b>Definition</b> <a href="wm_8c_source.html#l00034">wm.c:34</a></div></div>
 <div class="ttc" id="awm_8h_html"><div class="ttname"><a href="wm_8h.html">wm.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

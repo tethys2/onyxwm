@@ -103,6 +103,9 @@ $(function(){initNavTree('debug_8c.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">debug.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Provides functions for debuging including logging to a file.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdarg.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;time.h&gt;</code><br />
@@ -118,12 +121,16 @@ $(function(){initNavTree('debug_8c.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a46e0346af344f7fdc6dd61a2d9628c46" id="r_a46e0346af344f7fdc6dd61a2d9628c46"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46e0346af344f7fdc6dd61a2d9628c46">openLog</a> ()</td></tr>
+<tr class="memdesc:a46e0346af344f7fdc6dd61a2d9628c46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a log file called onyxwm.log.  <br /></td></tr>
 <tr class="separator:a46e0346af344f7fdc6dd61a2d9628c46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fefe4599aa30d8b38a13c41e7f68825" id="r_a9fefe4599aa30d8b38a13c41e7f68825"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fefe4599aa30d8b38a13c41e7f68825">flog</a> (char *type, const char *msg, va_list args)</td></tr>
+<tr class="memdesc:a9fefe4599aa30d8b38a13c41e7f68825"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a message to the log file.  <br /></td></tr>
 <tr class="separator:a9fefe4599aa30d8b38a13c41e7f68825"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae73e6af31920372e927584b01a4a66f9" id="r_ae73e6af31920372e927584b01a4a66f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae73e6af31920372e927584b01a4a66f9">logMessage</a> (const char *msg, int n,...)</td></tr>
+<tr class="memdesc:ae73e6af31920372e927584b01a4a66f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a message to stdout and log file.  <br /></td></tr>
 <tr class="separator:ae73e6af31920372e927584b01a4a66f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95ace5b5415a1deacf7d2ab72433b061" id="r_a95ace5b5415a1deacf7d2ab72433b061"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95ace5b5415a1deacf7d2ab72433b061">logError</a> (const char *msg, int n,...)</td></tr>
+<tr class="memdesc:a95ace5b5415a1deacf7d2ab72433b061"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a message to stderr and log file.  <br /></td></tr>
 <tr class="separator:a95ace5b5415a1deacf7d2ab72433b061"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -131,7 +138,11 @@ Variables</h2></td></tr>
 <tr class="memitem:a12b44d385fe1d1ec176c193744022600" id="r_a12b44d385fe1d1ec176c193744022600"><td class="memItemLeft" align="right" valign="top">static FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12b44d385fe1d1ec176c193744022600">LOG_FILE</a> = NULL</td></tr>
 <tr class="separator:a12b44d385fe1d1ec176c193744022600"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Provides functions for debuging including logging to a file. </p>
+
+<p class="definition">Definition in file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a9fefe4599aa30d8b38a13c41e7f68825" name="a9fefe4599aa30d8b38a13c41e7f68825"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9fefe4599aa30d8b38a13c41e7f68825">&#9670;&#160;</a></span>flog()</h2>
 
@@ -156,7 +167,18 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00048">48</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p>Log a message to the log file. </p>
+<p>Adds a timestamp, message type, then message with subsitutions</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Type of log message (eg. ERR or MSG) </td></tr>
+    <tr><td class="paramname">msg</td><td>Message to be logged </td></tr>
+    <tr><td class="paramname">args</td><td>Arguments (subsitutions) for message </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00069">69</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -184,7 +206,18 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00074">74</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p>Logs a message to stderr and log file. </p>
+<p>Works like printf: arbitrary substitution arguments</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>The message to log </td></tr>
+    <tr><td class="paramname">n</td><td>The number of arguments </td></tr>
+    <tr><td class="paramname">...</td><td>Substitutions </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00095">95</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -212,7 +245,18 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00063">63</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p>Logs a message to stdout and log file. </p>
+<p>Works like printf: arbitrary substitution arguments</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>The message to log </td></tr>
+    <tr><td class="paramname">n</td><td>The number of arguments </td></tr>
+    <tr><td class="paramname">...</td><td>Substitutions </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00084">84</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -231,7 +275,11 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00016">16</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p>Opens a log file called onyxwm.log. </p>
+<p>Will not create ./local/share, but will create ./local/share/onyxwm Uses LOG_FILE to store log file location</p>
+<dl class="section return"><dt>Returns</dt><dd>Whether the file successfully opened </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00028">28</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -256,7 +304,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00012">12</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00017">17</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>

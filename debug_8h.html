@@ -108,8 +108,10 @@ $(function(){initNavTree('debug_8h.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ae73e6af31920372e927584b01a4a66f9" id="r_ae73e6af31920372e927584b01a4a66f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae73e6af31920372e927584b01a4a66f9">logMessage</a> (const char *msg, int n,...)</td></tr>
+<tr class="memdesc:ae73e6af31920372e927584b01a4a66f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a message to stdout and log file.  <br /></td></tr>
 <tr class="separator:ae73e6af31920372e927584b01a4a66f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95ace5b5415a1deacf7d2ab72433b061" id="r_a95ace5b5415a1deacf7d2ab72433b061"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95ace5b5415a1deacf7d2ab72433b061">logError</a> (const char *msg, int n,...)</td></tr>
+<tr class="memdesc:a95ace5b5415a1deacf7d2ab72433b061"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a message to stderr and log file.  <br /></td></tr>
 <tr class="separator:a95ace5b5415a1deacf7d2ab72433b061"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -137,7 +139,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00074">74</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p>Logs a message to stderr and log file. </p>
+<p>Works like printf: arbitrary substitution arguments</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>The message to log </td></tr>
+    <tr><td class="paramname">n</td><td>The number of arguments </td></tr>
+    <tr><td class="paramname">...</td><td>Substitutions </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00095">95</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -165,7 +178,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00063">63</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p>Logs a message to stdout and log file. </p>
+<p>Works like printf: arbitrary substitution arguments</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>The message to log </td></tr>
+    <tr><td class="paramname">n</td><td>The number of arguments </td></tr>
+    <tr><td class="paramname">...</td><td>Substitutions </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00084">84</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>

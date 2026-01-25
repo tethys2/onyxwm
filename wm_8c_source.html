@@ -100,24 +100,26 @@ $(function(){initNavTree('wm_8c_source.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">wm.c</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="wm_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;xcb/xcb.h&gt;</span>      <span class="comment">// XCB core header</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;xcb/xcb_keysyms.h&gt;</span> <span class="comment">// XCB helper for key symbol handling</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;stdio.h&gt;</span>        <span class="comment">// printf, fprintf</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span>       <span class="comment">// exit, free</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;unistd.h&gt;</span>       <span class="comment">// fork, execlp</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;sys/types.h&gt;</span>    <span class="comment">// pid_t</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="debug_8h.html">debug.h</a>&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">// Already declared in main, needed to handle xcb stuff</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">extern</span> xcb_connection_t *<a class="code hl_variable" href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// Already declared in main, current screen</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">extern</span> xcb_screen_t *<a class="code hl_variable" href="main_8c.html#a3ed5753443da750ba010718592e5c93c">scre</a>;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">// from events.c, needed to alter window attributes (eg. for focus)</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">extern</span> uint32_t <a class="code hl_variable" href="events_8c.html#a46e73407328640d1a9c947a9397a1bc1">geometry_buf</a>[];</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="autostart_8h.html">config/autostart.h</a>&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span></div>
+<a href="wm_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;xcb/xcb.h&gt;</span>      <span class="comment">// XCB core header</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;xcb/xcb_keysyms.h&gt;</span> <span class="comment">// XCB helper for key symbol handling</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;stdio.h&gt;</span>        <span class="comment">// printf, fprintf</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span>       <span class="comment">// exit, free</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;unistd.h&gt;</span>       <span class="comment">// fork, execlp</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;sys/types.h&gt;</span>    <span class="comment">// pid_t</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="debug_8h.html">debug.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// Already declared in main, needed to handle xcb stuff</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">extern</span> xcb_connection_t *<a class="code hl_variable" href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">// Already declared in main, current screen</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">extern</span> xcb_screen_t *<a class="code hl_variable" href="main_8c.html#a3ed5753443da750ba010718592e5c93c">scre</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// from events.c, needed to alter window attributes (eg. for focus)</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">extern</span> uint32_t <a class="code hl_variable" href="events_8c.html#a46e73407328640d1a9c947a9397a1bc1">geometry_buf</a>[];</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="autostart_8h.html">config/autostart.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="wm_8c.html#a0c0d4d3a7387b827ac5adc4c3a55eaca">   24</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="wm_8c.html#a0c0d4d3a7387b827ac5adc4c3a55eaca">spawn</a>(<span class="keywordtype">char</span> **program) {</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordflow">if</span> (fork() == 0) { <span class="comment">//fork and continue if the program is the child</span></div>
@@ -129,88 +131,88 @@ $(function(){initNavTree('wm_8c_source.html',''); initResizable(true); });
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="comment">// Parent process does nothing; child runs the program</span></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
 </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
-<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="wm_8c.html#aa141ed4592ccda96eb82a00c53d1e2cc">   38</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="wm_8c.html#aa141ed4592ccda96eb82a00c53d1e2cc">exitWM</a>(<span class="keywordtype">int</span> ret){</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="comment">//disconnect</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>){</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                xcb_disconnect(<a class="code hl_variable" href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                <a class="code hl_variable" href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a> = NULL;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        }</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">if</span>(!ret){</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                <a class="code hl_function" href="debug_8c.html#ae73e6af31920372e927584b01a4a66f9">logMessage</a>(<span class="stringliteral">&quot;Exiting onyxWM successfully\n&quot;</span>, 1);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        }</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordflow">else</span>{</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                <a class="code hl_function" href="debug_8c.html#a95ace5b5415a1deacf7d2ab72433b061">logError</a>(<span class="stringliteral">&quot;Exiting onyxWM with error\n&quot;</span>, 1);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        }</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="comment">//exit program with code from argument</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        exit(ret);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="wm_8c.html#aa141ed4592ccda96eb82a00c53d1e2cc">   34</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="wm_8c.html#aa141ed4592ccda96eb82a00c53d1e2cc">exitWM</a>(<span class="keywordtype">int</span> ret){</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="comment">//disconnect</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>){</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                xcb_disconnect(<a class="code hl_variable" href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                <a class="code hl_variable" href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a> = NULL;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">if</span>(!ret){</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                <a class="code hl_function" href="debug_8c.html#ae73e6af31920372e927584b01a4a66f9">logMessage</a>(<span class="stringliteral">&quot;Exiting onyxWM successfully\n&quot;</span>, 1);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">else</span>{</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                <a class="code hl_function" href="debug_8c.html#a95ace5b5415a1deacf7d2ab72433b061">logError</a>(<span class="stringliteral">&quot;Exiting onyxWM with error\n&quot;</span>, 1);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="comment">//exit program with code from argument</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        exit(ret);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
 </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span></div>
-<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="wm_8c.html#a681a293a005242d6e764b3f456cca67b">   57</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="wm_8c.html#a681a293a005242d6e764b3f456cca67b">autostart</a>() {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="comment">// iterate over the autostart list in config until NULL</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; <a class="code hl_variable" href="autostart_8h.html#a99cc92c049d2f33dfe31dd76e2a083f4">autostart_list</a>[i][0] != NULL; i++){</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                <span class="comment">// spawn the program in the current index</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                <a class="code hl_function" href="wm_8c.html#a0c0d4d3a7387b827ac5adc4c3a55eaca">spawn</a>(<a class="code hl_variable" href="autostart_8h.html#a99cc92c049d2f33dfe31dd76e2a083f4">autostart_list</a>[i]);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        }</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="}">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="wm_8c.html#a681a293a005242d6e764b3f456cca67b">   50</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="wm_8c.html#a681a293a005242d6e764b3f456cca67b">autostart</a>() {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="comment">// iterate over the autostart list in config until NULL</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; <a class="code hl_variable" href="autostart_8h.html#a99cc92c049d2f33dfe31dd76e2a083f4">autostart_list</a>[i][0] != NULL; i++){</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                <span class="comment">// spawn the program in the current index</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                <a class="code hl_function" href="wm_8c.html#a0c0d4d3a7387b827ac5adc4c3a55eaca">spawn</a>(<a class="code hl_variable" href="autostart_8h.html#a99cc92c049d2f33dfe31dd76e2a083f4">autostart_list</a>[i]);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
 </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span></div>
-<div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="wm_8c.html#a2e47568ee0783c0d4ea2a15c7de586ee">   70</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="wm_8c.html#a2e47568ee0783c0d4ea2a15c7de586ee">raiseWin</a>(xcb_drawable_t win) {</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <a class="code hl_variable" href="events_8c.html#a46e73407328640d1a9c947a9397a1bc1">geometry_buf</a>[0] = XCB_STACK_MODE_ABOVE;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        xcb_configure_window(<a class="code hl_variable" href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>, win, XCB_CONFIG_WINDOW_STACK_MODE, <a class="code hl_variable" href="events_8c.html#a46e73407328640d1a9c947a9397a1bc1">geometry_buf</a>);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="foldopen" id="foldopen00058" data-start="{" data-end="}">
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="wm_8c.html#a2e47568ee0783c0d4ea2a15c7de586ee">   58</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="wm_8c.html#a2e47568ee0783c0d4ea2a15c7de586ee">raiseWin</a>(xcb_drawable_t win) {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <a class="code hl_variable" href="events_8c.html#a46e73407328640d1a9c947a9397a1bc1">geometry_buf</a>[0] = XCB_STACK_MODE_ABOVE;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        xcb_configure_window(<a class="code hl_variable" href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>, win, XCB_CONFIG_WINDOW_STACK_MODE, <a class="code hl_variable" href="events_8c.html#a46e73407328640d1a9c947a9397a1bc1">geometry_buf</a>);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}</div>
 </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span></div>
-<div class="foldopen" id="foldopen00080" data-start="{" data-end="}">
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="wm_8c.html#a1e3ba489d6f3aeddafc836ef2ae37a0b">   80</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="wm_8c.html#a1e3ba489d6f3aeddafc836ef2ae37a0b">focusInput</a>(xcb_drawable_t win) {</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">if</span> ((win != 0) &amp;&amp; (win != <a class="code hl_variable" href="main_8c.html#a3ed5753443da750ba010718592e5c93c">scre</a>-&gt;root)){</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                xcb_set_input_focus(<a class="code hl_variable" href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>, XCB_INPUT_FOCUS_POINTER_ROOT, win, XCB_CURRENT_TIME);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        }</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="foldopen" id="foldopen00063" data-start="{" data-end="}">
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="wm_8c.html#a1e3ba489d6f3aeddafc836ef2ae37a0b">   63</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="wm_8c.html#a1e3ba489d6f3aeddafc836ef2ae37a0b">focusInput</a>(xcb_drawable_t win) {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">if</span> ((win != 0) &amp;&amp; (win != <a class="code hl_variable" href="main_8c.html#a3ed5753443da750ba010718592e5c93c">scre</a>-&gt;root)){</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                xcb_set_input_focus(<a class="code hl_variable" href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>, XCB_INPUT_FOCUS_POINTER_ROOT, win, XCB_CURRENT_TIME);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
 </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span></div>
-<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="wm_8c.html#a168c9f92118298ec106fffddb4c919a6">   92</a></span>xcb_keysym_t <a class="code hl_function" href="wm_8c.html#a168c9f92118298ec106fffddb4c919a6">getKeysym</a>(xcb_keycode_t keycode){</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="comment">// Creates mapping table for keysyms</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        xcb_key_symbols_t *keysyms = xcb_key_symbols_alloc(<a class="code hl_variable" href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>);</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="comment">// convert keysym if mapping table exists</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        xcb_keysym_t keysym = (keysyms ? xcb_key_symbols_get_keysym(keysyms, keycode, 0) : 0);</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="comment">// mapping table needs to be freed since we allocated it</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        xcb_key_symbols_free(keysyms);</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="keywordflow">return</span> keysym;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="foldopen" id="foldopen00069" data-start="{" data-end="}">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="wm_8c.html#a168c9f92118298ec106fffddb4c919a6">   69</a></span>xcb_keysym_t <a class="code hl_function" href="wm_8c.html#a168c9f92118298ec106fffddb4c919a6">getKeysym</a>(xcb_keycode_t keycode){</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="comment">// Creates mapping table for keysyms</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        xcb_key_symbols_t *keysyms = xcb_key_symbols_alloc(<a class="code hl_variable" href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="comment">// convert keysym if mapping table exists</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        xcb_keysym_t keysym = (keysyms ? xcb_key_symbols_get_keysym(keysyms, keycode, 0) : 0);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="comment">// mapping table needs to be freed since we allocated it</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        xcb_key_symbols_free(keysyms);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordflow">return</span> keysym;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
 </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span></div>
-<div class="foldopen" id="foldopen00108" data-start="{" data-end="}">
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="wm_8c.html#aaca40fbd98103b20bdf7d7f16e1dac5e">  108</a></span>xcb_keycode_t *<a class="code hl_function" href="wm_8c.html#aaca40fbd98103b20bdf7d7f16e1dac5e">getKeycode</a>(xcb_keysym_t keysym){</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="comment">// Creates mapping table for keysyms</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        xcb_key_symbols_t *keysyms = xcb_key_symbols_alloc(<a class="code hl_variable" href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>);</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="comment">// convert keycode if mapping table exists</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        xcb_keycode_t *keycode = (keysyms ? xcb_key_symbols_get_keycode(keysyms, keysym) : NULL);</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="comment">// mapping table needs to be freed since we allocated it</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        xcb_key_symbols_free(keysyms);</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="keywordflow">return</span> keycode;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>}</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="wm_8c.html#aaca40fbd98103b20bdf7d7f16e1dac5e">   79</a></span>xcb_keycode_t *<a class="code hl_function" href="wm_8c.html#aaca40fbd98103b20bdf7d7f16e1dac5e">getKeycode</a>(xcb_keysym_t keysym){</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="comment">// Creates mapping table for keysyms</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        xcb_key_symbols_t *keysyms = xcb_key_symbols_alloc(<a class="code hl_variable" href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="comment">// convert keycode if mapping table exists</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        xcb_keycode_t *keycode = (keysyms ? xcb_key_symbols_get_keycode(keysyms, keysym) : NULL);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="comment">// mapping table needs to be freed since we allocated it</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        xcb_key_symbols_free(keysyms);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordflow">return</span> keycode;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>}</div>
 </div>
 <div class="ttc" id="aautostart_8h_html"><div class="ttname"><a href="autostart_8h.html">autostart.h</a></div></div>
 <div class="ttc" id="aautostart_8h_html_a99cc92c049d2f33dfe31dd76e2a083f4"><div class="ttname"><a href="autostart_8h.html#a99cc92c049d2f33dfe31dd76e2a083f4">autostart_list</a></div><div class="ttdeci">static char * autostart_list[][4]</div><div class="ttdef"><b>Definition</b> <a href="autostart_8h_source.html#l00004">autostart.h:4</a></div></div>
-<div class="ttc" id="adebug_8c_html_a95ace5b5415a1deacf7d2ab72433b061"><div class="ttname"><a href="debug_8c.html#a95ace5b5415a1deacf7d2ab72433b061">logError</a></div><div class="ttdeci">void logError(const char *msg, int n,...)</div><div class="ttdef"><b>Definition</b> <a href="debug_8c_source.html#l00074">debug.c:74</a></div></div>
-<div class="ttc" id="adebug_8c_html_ae73e6af31920372e927584b01a4a66f9"><div class="ttname"><a href="debug_8c.html#ae73e6af31920372e927584b01a4a66f9">logMessage</a></div><div class="ttdeci">void logMessage(const char *msg, int n,...)</div><div class="ttdef"><b>Definition</b> <a href="debug_8c_source.html#l00063">debug.c:63</a></div></div>
+<div class="ttc" id="adebug_8c_html_a95ace5b5415a1deacf7d2ab72433b061"><div class="ttname"><a href="debug_8c.html#a95ace5b5415a1deacf7d2ab72433b061">logError</a></div><div class="ttdeci">void logError(const char *msg, int n,...)</div><div class="ttdoc">Logs a message to stderr and log file.</div><div class="ttdef"><b>Definition</b> <a href="debug_8c_source.html#l00095">debug.c:95</a></div></div>
+<div class="ttc" id="adebug_8c_html_ae73e6af31920372e927584b01a4a66f9"><div class="ttname"><a href="debug_8c.html#ae73e6af31920372e927584b01a4a66f9">logMessage</a></div><div class="ttdeci">void logMessage(const char *msg, int n,...)</div><div class="ttdoc">Logs a message to stdout and log file.</div><div class="ttdef"><b>Definition</b> <a href="debug_8c_source.html#l00084">debug.c:84</a></div></div>
 <div class="ttc" id="adebug_8h_html"><div class="ttname"><a href="debug_8h.html">debug.h</a></div></div>
-<div class="ttc" id="aevents_8c_html_a46e73407328640d1a9c947a9397a1bc1"><div class="ttname"><a href="events_8c.html#a46e73407328640d1a9c947a9397a1bc1">geometry_buf</a></div><div class="ttdeci">uint32_t geometry_buf[5]</div><div class="ttdef"><b>Definition</b> <a href="events_8c_source.html#l00033">events.c:33</a></div></div>
+<div class="ttc" id="aevents_8c_html_a46e73407328640d1a9c947a9397a1bc1"><div class="ttname"><a href="events_8c.html#a46e73407328640d1a9c947a9397a1bc1">geometry_buf</a></div><div class="ttdeci">uint32_t geometry_buf[5]</div><div class="ttdef"><b>Definition</b> <a href="events_8c_source.html#l00034">events.c:34</a></div></div>
 <div class="ttc" id="aevents_8c_html_a502c62a5c7817d977e6700fb0cb4db0e"><div class="ttname"><a href="events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a></div><div class="ttdeci">xcb_connection_t * dpy</div><div class="ttdef"><b>Definition</b> <a href="main_8c_source.html#l00016">main.c:16</a></div></div>
 <div class="ttc" id="amain_8c_html_a3ed5753443da750ba010718592e5c93c"><div class="ttname"><a href="main_8c.html#a3ed5753443da750ba010718592e5c93c">scre</a></div><div class="ttdeci">xcb_screen_t * scre</div><div class="ttdef"><b>Definition</b> <a href="main_8c_source.html#l00018">main.c:18</a></div></div>
 <div class="ttc" id="awm_8c_html_a0c0d4d3a7387b827ac5adc4c3a55eaca"><div class="ttname"><a href="wm_8c.html#a0c0d4d3a7387b827ac5adc4c3a55eaca">spawn</a></div><div class="ttdeci">void spawn(char **program)</div><div class="ttdoc">Spawn a program by forking and then becoming the program.</div><div class="ttdef"><b>Definition</b> <a href="#l00024">wm.c:24</a></div></div>
-<div class="ttc" id="awm_8c_html_a168c9f92118298ec106fffddb4c919a6"><div class="ttname"><a href="wm_8c.html#a168c9f92118298ec106fffddb4c919a6">getKeysym</a></div><div class="ttdeci">xcb_keysym_t getKeysym(xcb_keycode_t keycode)</div><div class="ttdoc">Convert an xcb_keycode_t into an xcb_keysym_t by creating and destroying a key symbols table.</div><div class="ttdef"><b>Definition</b> <a href="#l00092">wm.c:92</a></div></div>
-<div class="ttc" id="awm_8c_html_a1e3ba489d6f3aeddafc836ef2ae37a0b"><div class="ttname"><a href="wm_8c.html#a1e3ba489d6f3aeddafc836ef2ae37a0b">focusInput</a></div><div class="ttdeci">void focusInput(xcb_drawable_t win)</div><div class="ttdoc">Give a window input focus if not root or undefined.</div><div class="ttdef"><b>Definition</b> <a href="#l00080">wm.c:80</a></div></div>
-<div class="ttc" id="awm_8c_html_a2e47568ee0783c0d4ea2a15c7de586ee"><div class="ttname"><a href="wm_8c.html#a2e47568ee0783c0d4ea2a15c7de586ee">raiseWin</a></div><div class="ttdeci">void raiseWin(xcb_drawable_t win)</div><div class="ttdoc">Raise a window by setting its XCB_CONFIG_WINDOW_STACK_MODE to XCB_STACK_MODE_ABOVE.</div><div class="ttdef"><b>Definition</b> <a href="#l00070">wm.c:70</a></div></div>
-<div class="ttc" id="awm_8c_html_a681a293a005242d6e764b3f456cca67b"><div class="ttname"><a href="wm_8c.html#a681a293a005242d6e764b3f456cca67b">autostart</a></div><div class="ttdeci">void autostart()</div><div class="ttdoc">Spawn all programs in autostart_list from config/autostart.h.</div><div class="ttdef"><b>Definition</b> <a href="#l00057">wm.c:57</a></div></div>
-<div class="ttc" id="awm_8c_html_aa141ed4592ccda96eb82a00c53d1e2cc"><div class="ttname"><a href="wm_8c.html#aa141ed4592ccda96eb82a00c53d1e2cc">exitWM</a></div><div class="ttdeci">void exitWM(int ret)</div><div class="ttdoc">Clean up the program and exit.</div><div class="ttdef"><b>Definition</b> <a href="#l00038">wm.c:38</a></div></div>
-<div class="ttc" id="awm_8c_html_aaca40fbd98103b20bdf7d7f16e1dac5e"><div class="ttname"><a href="wm_8c.html#aaca40fbd98103b20bdf7d7f16e1dac5e">getKeycode</a></div><div class="ttdeci">xcb_keycode_t * getKeycode(xcb_keysym_t keysym)</div><div class="ttdoc">Convert an xcb_keysym_t into an xcb_keycode_t by creating and destroying a key symbols table.</div><div class="ttdef"><b>Definition</b> <a href="#l00108">wm.c:108</a></div></div>
+<div class="ttc" id="awm_8c_html_a168c9f92118298ec106fffddb4c919a6"><div class="ttname"><a href="wm_8c.html#a168c9f92118298ec106fffddb4c919a6">getKeysym</a></div><div class="ttdeci">xcb_keysym_t getKeysym(xcb_keycode_t keycode)</div><div class="ttdoc">Convert an xcb_keycode_t into an xcb_keysym_t by creating and destroying a key symbols table.</div><div class="ttdef"><b>Definition</b> <a href="#l00069">wm.c:69</a></div></div>
+<div class="ttc" id="awm_8c_html_a1e3ba489d6f3aeddafc836ef2ae37a0b"><div class="ttname"><a href="wm_8c.html#a1e3ba489d6f3aeddafc836ef2ae37a0b">focusInput</a></div><div class="ttdeci">void focusInput(xcb_drawable_t win)</div><div class="ttdoc">Give a window input focus if not root or undefined.</div><div class="ttdef"><b>Definition</b> <a href="#l00063">wm.c:63</a></div></div>
+<div class="ttc" id="awm_8c_html_a2e47568ee0783c0d4ea2a15c7de586ee"><div class="ttname"><a href="wm_8c.html#a2e47568ee0783c0d4ea2a15c7de586ee">raiseWin</a></div><div class="ttdeci">void raiseWin(xcb_drawable_t win)</div><div class="ttdoc">Raise a window by setting its XCB_CONFIG_WINDOW_STACK_MODE to XCB_STACK_MODE_ABOVE.</div><div class="ttdef"><b>Definition</b> <a href="#l00058">wm.c:58</a></div></div>
+<div class="ttc" id="awm_8c_html_a681a293a005242d6e764b3f456cca67b"><div class="ttname"><a href="wm_8c.html#a681a293a005242d6e764b3f456cca67b">autostart</a></div><div class="ttdeci">void autostart()</div><div class="ttdoc">Spawn all programs in autostart_list from config/autostart.h.</div><div class="ttdef"><b>Definition</b> <a href="#l00050">wm.c:50</a></div></div>
+<div class="ttc" id="awm_8c_html_aa141ed4592ccda96eb82a00c53d1e2cc"><div class="ttname"><a href="wm_8c.html#aa141ed4592ccda96eb82a00c53d1e2cc">exitWM</a></div><div class="ttdeci">void exitWM(int ret)</div><div class="ttdoc">Clean up the program and exit.</div><div class="ttdef"><b>Definition</b> <a href="#l00034">wm.c:34</a></div></div>
+<div class="ttc" id="awm_8c_html_aaca40fbd98103b20bdf7d7f16e1dac5e"><div class="ttname"><a href="wm_8c.html#aaca40fbd98103b20bdf7d7f16e1dac5e">getKeycode</a></div><div class="ttdeci">xcb_keycode_t * getKeycode(xcb_keysym_t keysym)</div><div class="ttdoc">Convert an xcb_keysym_t into an xcb_keycode_t by creating and destroying a key symbols table.</div><div class="ttdef"><b>Definition</b> <a href="#l00079">wm.c:79</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
