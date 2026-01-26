@@ -56,7 +56,7 @@ void autostart() {
 void raiseWin(xcb_drawable_t win) {
 	// xcb_configure window wants a list of values
 	// so we have to make a buffer
-	uint32_t *stack_mode = XCB_STACK_MODE_ABOVE;
+	uint32_t stack_mode[1] = {XCB_STACK_MODE_ABOVE};
 	xcb_configure_window(dpy, win, XCB_CONFIG_WINDOW_STACK_MODE, stack_mode);
 }
 
