@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['logerror_0',['logError',['../debug_8c.html#a95ace5b5415a1deacf7d2ab72433b061',1,'logError(const char *msg, int n,...):&#160;debug.c'],['../debug_8h.html#a95ace5b5415a1deacf7d2ab72433b061',1,'logError(const char *msg, int n,...):&#160;debug.c']]],
-  ['logmessage_1',['logMessage',['../debug_8c.html#ae73e6af31920372e927584b01a4a66f9',1,'logMessage(const char *msg, int n,...):&#160;debug.c'],['../debug_8h.html#ae73e6af31920372e927584b01a4a66f9',1,'logMessage(const char *msg, int n,...):&#160;debug.c']]]
+  ['killwindow_0',['killWindow',['../actions_8c.html#af16d5c7da07d512765c44453fa0c519b',1,'killWindow(const arg_t *arg):&#160;actions.c'],['../actions_8h.html#af16d5c7da07d512765c44453fa0c519b',1,'killWindow(const arg_t *arg):&#160;actions.c']]]
 ];

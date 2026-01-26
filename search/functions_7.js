@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['openlog_0',['openLog',['../debug_8c.html#a46e0346af344f7fdc6dd61a2d9628c46',1,'debug.c']]]
+  ['main_0',['main',['../main_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main.c']]]
 ];

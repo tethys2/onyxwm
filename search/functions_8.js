@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quit_0',['quit',['../actions_8c.html#ad4d1699b32a3fc326976f2288d785398',1,'quit(const arg_t *arg):&#160;actions.c'],['../actions_8h.html#ad4d1699b32a3fc326976f2288d785398',1,'quit(const arg_t *arg):&#160;actions.c']]]
+  ['openlog_0',['openLog',['../debug_8c.html#a46e0346af344f7fdc6dd61a2d9628c46',1,'debug.c']]]
 ];

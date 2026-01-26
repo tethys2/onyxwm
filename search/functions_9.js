@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['raisewin_0',['raiseWin',['../wm_8c.html#a2e47568ee0783c0d4ea2a15c7de586ee',1,'raiseWin(xcb_drawable_t win):&#160;wm.c'],['../wm_8h.html#a2e47568ee0783c0d4ea2a15c7de586ee',1,'raiseWin(xcb_drawable_t win):&#160;wm.c']]]
+  ['quit_0',['quit',['../actions_8c.html#ad4d1699b32a3fc326976f2288d785398',1,'quit(const arg_t *arg):&#160;actions.c'],['../actions_8h.html#ad4d1699b32a3fc326976f2288d785398',1,'quit(const arg_t *arg):&#160;actions.c']]]
 ];
