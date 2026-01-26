@@ -11,7 +11,7 @@ void spawn(char **program);
 /**
  * @brief Clean up the program and exit
  *
- * @param ret What to exit with: 0 for success, 1 for failure
+ * @param ret What to exit with: 0 for success, -1 for failure
  */
 void exitWM(int ret);
 /**

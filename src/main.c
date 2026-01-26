@@ -27,8 +27,8 @@ int main(void) {
 	// Check if the connection has an error
 	if (xcb_connection_has_error(dpy)) {
 		logError("Failed to connect to X server\n", 0);
-		return 1;
-	} 
+		return -1;
+	}
 	//get setup info
 	const xcb_setup_t *setup = xcb_get_setup(dpy);
 	// Iterator over available screens
@@ -58,7 +58,7 @@ int main(void) {
 		logError("Another window manager is already running\n", 0);
 		free(err);
 		xcb_disconnect(dpy);
-		return 1;
+		return -1;
 	}
 	// grab keybindings
 	int keys_length = sizeof(keys) / sizeof(keys[0]);
@@ -73,7 +73,7 @@ int main(void) {
 	xcb_grab_button(dpy, 0, scre->root, XCB_EVENT_MASK_BUTTON_PRESS | XCB_EVENT_MASK_BUTTON_RELEASE, XCB_GRAB_MODE_ASYNC, XCB_GRAB_MODE_ASYNC, scre->root, XCB_NONE, 1, MOD);
 	xcb_grab_button(dpy, 0, scre->root, XCB_EVENT_MASK_BUTTON_PRESS | XCB_EVENT_MASK_BUTTON_RELEASE, XCB_GRAB_MODE_ASYNC, XCB_GRAB_MODE_ASYNC, scre->root, XCB_NONE, 3, MOD);
 	logMessage("onxyWM is running\n", 0);
-	
+
 	// start autostart apps
 	autostart();
 
@@ -85,7 +85,8 @@ int main(void) {
 		// event needs to freed since xcb gives us ownership
 		free(ev);
 		// break if xcb connection has an error
-		if((ret = xcb_connection_has_error(dpy))){
+		if(xcb_connection_has_error(dpy)){
+			ret = -1;
 			break;
 		}
 	}
