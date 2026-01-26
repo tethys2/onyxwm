@@ -28,4 +28,5 @@ void killWindow(const arg_t *arg){
 	(void)arg;
 	// kill focused window
 	xcb_kill_client(dpy, foc_win);
+	xcb_flush(dpy);
 }
