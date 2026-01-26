@@ -16,8 +16,6 @@
 extern xcb_connection_t *dpy;
 // Already declared in main, current screen
 extern xcb_screen_t *scre;
-// from events.c, needed to alter window attributes (eg. for focus)
-extern uint32_t geometry_buf[];
 
 #include "config/autostart.h"
 
@@ -56,8 +54,10 @@ void autostart() {
 }
 
 void raiseWin(xcb_drawable_t win) {
-	geometry_buf[0] = XCB_STACK_MODE_ABOVE;
-	xcb_configure_window(dpy, win, XCB_CONFIG_WINDOW_STACK_MODE, geometry_buf);
+	// xcb_configure window wants a list of values
+	// so we have to make a buffer
+	uint32_t *stack_mode = XCB_STACK_MODE_ABOVE;
+	xcb_configure_window(dpy, win, XCB_CONFIG_WINDOW_STACK_MODE, stack_mode);
 }
 
 void focusInput(xcb_drawable_t win) {
