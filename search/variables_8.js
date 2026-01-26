@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mod_0',['mod',['../structkeybinding__t.html#a75b74e0153fdf265dbcd996cadd04752',1,'keybinding_t']]]
+  ['scre_0',['scre',['../main_8c.html#a3ed5753443da750ba010718592e5c93c',1,'scre:&#160;state.c'],['../state_8c.html#a3ed5753443da750ba010718592e5c93c',1,'scre:&#160;state.c'],['../wm_8c.html#a3ed5753443da750ba010718592e5c93c',1,'scre:&#160;state.c']]]
 ];

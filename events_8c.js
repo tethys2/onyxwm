@@ -7,6 +7,5 @@ var events_8c =
     [ "handleMapNotify", "events_8c.html#a875581a1c3b57782ae3e8bafbc7866b6", null ],
     [ "handleMapRequest", "events_8c.html#a2ba5f74c7bc352faced360ccb95ae597", null ],
     [ "dpy", "events_8c.html#a502c62a5c7817d977e6700fb0cb4db0e", null ],
-    [ "event_handlers", "events_8c.html#a4ca51d696b19a92f01229309dd890767", null ],
-    [ "geometry_buf", "events_8c.html#a46e73407328640d1a9c947a9397a1bc1", null ]
+    [ "event_handlers", "events_8c.html#a4ca51d696b19a92f01229309dd890767", null ]
 ];

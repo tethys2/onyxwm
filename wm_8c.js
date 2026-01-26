@@ -8,6 +8,5 @@ var wm_8c =
     [ "raiseWin", "wm_8c.html#a2e47568ee0783c0d4ea2a15c7de586ee", null ],
     [ "spawn", "wm_8c.html#a0c0d4d3a7387b827ac5adc4c3a55eaca", null ],
     [ "dpy", "wm_8c.html#a502c62a5c7817d977e6700fb0cb4db0e", null ],
-    [ "geometry_buf", "wm_8c.html#a9f641a2dbd795a9aad818529c9a5878f", null ],
     [ "scre", "wm_8c.html#a3ed5753443da750ba010718592e5c93c", null ]
 ];

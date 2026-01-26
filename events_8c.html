@@ -150,8 +150,6 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:a502c62a5c7817d977e6700fb0cb4db0e" id="r_a502c62a5c7817d977e6700fb0cb4db0e"><td class="memItemLeft" align="right" valign="top">xcb_connection_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a></td></tr>
 <tr class="separator:a502c62a5c7817d977e6700fb0cb4db0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46e73407328640d1a9c947a9397a1bc1" id="r_a46e73407328640d1a9c947a9397a1bc1"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46e73407328640d1a9c947a9397a1bc1">geometry_buf</a> [5]</td></tr>
-<tr class="separator:a46e73407328640d1a9c947a9397a1bc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ca51d696b19a92f01229309dd890767" id="r_a4ca51d696b19a92f01229309dd890767"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a2441cf9978403bb5deada7bb66e8d365">event_handler_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ca51d696b19a92f01229309dd890767">event_handlers</a> [<a class="el" href="#a97db5f885745464c656ec24703f44675">HANDLER_COUNT</a>]</td></tr>
 <tr class="separator:a4ca51d696b19a92f01229309dd890767"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -217,7 +215,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00042">42</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00039">39</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
 
 </div>
 </div>
@@ -252,7 +250,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00060">60</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00057">57</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
 
 </div>
 </div>
@@ -287,7 +285,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00092">92</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00089">89</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
 
 </div>
 </div>
@@ -322,7 +320,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00079">79</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00076">76</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
 
 </div>
 </div>
@@ -347,7 +345,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00016">16</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="state_8c_source.html#l00011">11</a> of file <a class="el" href="state_8c_source.html">state.c</a>.</p>
 
 </div>
 </div>
@@ -375,27 +373,11 @@ Variables</h2></td></tr>
 <div class="line">        [XCB_MAP_REQUEST]    = <a class="code hl_function" href="#a2ba5f74c7bc352faced360ccb95ae597">handleMapRequest</a>,</div>
 <div class="line">        [XCB_MAP_NOTIFY]     = <a class="code hl_function" href="#a875581a1c3b57782ae3e8bafbc7866b6">handleMapNotify</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="aevents_8c_html_a2ba5f74c7bc352faced360ccb95ae597"><div class="ttname"><a href="#a2ba5f74c7bc352faced360ccb95ae597">handleMapRequest</a></div><div class="ttdeci">static void handleMapRequest(xcb_generic_event_t *ev)</div><div class="ttdoc">Maps a window to the screen.</div><div class="ttdef"><b>Definition</b> <a href="events_8c_source.html#l00079">events.c:79</a></div></div>
-<div class="ttc" id="aevents_8c_html_a57175c42f21412727c7a4222999e4b49"><div class="ttname"><a href="#a57175c42f21412727c7a4222999e4b49">handleKeyPress</a></div><div class="ttdeci">static void handleKeyPress(xcb_generic_event_t *ev)</div><div class="ttdoc">Calls corresponding keybind in keys.</div><div class="ttdef"><b>Definition</b> <a href="events_8c_source.html#l00060">events.c:60</a></div></div>
-<div class="ttc" id="aevents_8c_html_a875581a1c3b57782ae3e8bafbc7866b6"><div class="ttname"><a href="#a875581a1c3b57782ae3e8bafbc7866b6">handleMapNotify</a></div><div class="ttdeci">static void handleMapNotify(xcb_generic_event_t *ev)</div><div class="ttdoc">Give newly mapped windows focus.</div><div class="ttdef"><b>Definition</b> <a href="events_8c_source.html#l00092">events.c:92</a></div></div>
+<div class="ttc" id="aevents_8c_html_a2ba5f74c7bc352faced360ccb95ae597"><div class="ttname"><a href="#a2ba5f74c7bc352faced360ccb95ae597">handleMapRequest</a></div><div class="ttdeci">static void handleMapRequest(xcb_generic_event_t *ev)</div><div class="ttdoc">Maps a window to the screen.</div><div class="ttdef"><b>Definition</b> <a href="events_8c_source.html#l00076">events.c:76</a></div></div>
+<div class="ttc" id="aevents_8c_html_a57175c42f21412727c7a4222999e4b49"><div class="ttname"><a href="#a57175c42f21412727c7a4222999e4b49">handleKeyPress</a></div><div class="ttdeci">static void handleKeyPress(xcb_generic_event_t *ev)</div><div class="ttdoc">Calls corresponding keybind in keys.</div><div class="ttdef"><b>Definition</b> <a href="events_8c_source.html#l00057">events.c:57</a></div></div>
+<div class="ttc" id="aevents_8c_html_a875581a1c3b57782ae3e8bafbc7866b6"><div class="ttname"><a href="#a875581a1c3b57782ae3e8bafbc7866b6">handleMapNotify</a></div><div class="ttdeci">static void handleMapNotify(xcb_generic_event_t *ev)</div><div class="ttdoc">Give newly mapped windows focus.</div><div class="ttdef"><b>Definition</b> <a href="events_8c_source.html#l00089">events.c:89</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00036">36</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
-
-</div>
-</div>
-<a id="a46e73407328640d1a9c947a9397a1bc1" name="a46e73407328640d1a9c947a9397a1bc1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46e73407328640d1a9c947a9397a1bc1">&#9670;&#160;</a></span>geometry_buf</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t geometry_buf[5]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00034">34</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00033">33</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
 
 </div>
 </div>

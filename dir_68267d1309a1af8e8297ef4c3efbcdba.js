@@ -8,6 +8,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "events.c", "events_8c.html", "events_8c" ],
     [ "events.h", "events_8h.html", "events_8h" ],
     [ "main.c", "main_8c.html", "main_8c" ],
+    [ "state.c", "state_8c.html", "state_8c" ],
     [ "types.h", "types_8h.html", "types_8h" ],
     [ "wm.c", "wm_8c.html", "wm_8c" ],
     [ "wm.h", "wm_8h.html", "wm_8h" ]
