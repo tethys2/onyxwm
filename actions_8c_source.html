@@ -132,7 +132,8 @@ $(function(){initNavTree('actions_8c_source.html',''); initResizable(true); });
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        (void)arg;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="comment">// kill focused window</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        xcb_kill_client(<a class="code hl_variable" href="actions_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>, <a class="code hl_variable" href="actions_8c.html#a0fc72a4514bb687f716fd30d0e227014">foc_win</a>);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        xcb_flush(<a class="code hl_variable" href="actions_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
 </div>
 <div class="ttc" id="aactions_8c_html_a0fc72a4514bb687f716fd30d0e227014"><div class="ttname"><a href="actions_8c.html#a0fc72a4514bb687f716fd30d0e227014">foc_win</a></div><div class="ttdeci">xcb_drawable_t foc_win</div><div class="ttdef"><b>Definition</b> <a href="state_8c_source.html#l00015">state.c:15</a></div></div>
 <div class="ttc" id="aactions_8c_html_a502c62a5c7817d977e6700fb0cb4db0e"><div class="ttname"><a href="actions_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a></div><div class="ttdeci">xcb_connection_t * dpy</div><div class="ttdef"><b>Definition</b> <a href="state_8c_source.html#l00011">state.c:11</a></div></div>
