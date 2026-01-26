@@ -16,5 +16,13 @@ void quit(const arg_t *arg);
  * @param arg Argument list for program starting with name and ending in NULL
  */
 void spawnAct(const arg_t *arg);
+/**
+ * @brief Kills the currently focused window
+ *
+ * focused window is stored in foc_win
+ *
+ * @param arg Unused
+ */
+void killWindow(const arg_t *arg);
 
 #endif

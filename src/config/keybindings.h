@@ -11,7 +11,8 @@ static const char *term_cmd[] = {"st", NULL};
 // keybinding table, intended to modified
 // modifier key, key, function, argument
 static const keybinding_t keys[] = {
-	{MOD,        XK_r,         spawnAct,        {.v = launcher_cmd}}, 
-	{MOD,        XK_Return,             spawnAct,    {.v = term_cmd}}, 
-	{MOD|SHIFT,  XK_Escape,        quit,        {0}}, 
+	{MOD,        XK_r,         spawnAct,        {.v = launcher_cmd}},
+	{MOD,        XK_Return,    spawnAct,        {.v = term_cmd}},
+	{MOD|SHIFT,  XK_Escape,        quit,        {0}},
+	{MOD|SHIFT,  XK_c,         killWindow,      {0}},
 };
