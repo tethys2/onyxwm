@@ -108,9 +108,9 @@ $(function(){initNavTree('events_8c.html',''); initResizable(true); });
 
 <p>Handles events.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;xcb/xproto.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;xcb/xcb.h&gt;</code><br />
+<code>#include &lt;xcb/xproto.h&gt;</code><br />
 <code>#include &lt;xcb/xcb_event.h&gt;</code><br />
-<code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="events_8h_source.html">events.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="debug_8h_source.html">debug.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="wm_8h_source.html">wm.h</a>&quot;</code><br />
@@ -142,6 +142,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a875581a1c3b57782ae3e8bafbc7866b6" id="r_a875581a1c3b57782ae3e8bafbc7866b6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a875581a1c3b57782ae3e8bafbc7866b6">handleMapNotify</a> (xcb_generic_event_t *ev)</td></tr>
 <tr class="memdesc:a875581a1c3b57782ae3e8bafbc7866b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Give newly mapped windows focus.  <br /></td></tr>
 <tr class="separator:a875581a1c3b57782ae3e8bafbc7866b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6163226ea35fd631cb3240dd1f68566b" id="r_a6163226ea35fd631cb3240dd1f68566b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6163226ea35fd631cb3240dd1f68566b">handleButtonPress</a> (xcb_generic_event_t *ev)</td></tr>
+<tr class="memdesc:a6163226ea35fd631cb3240dd1f68566b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Focuses window and sets it up for movement.  <br /></td></tr>
+<tr class="separator:a6163226ea35fd631cb3240dd1f68566b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa51e79f4ea49835f825b929b12238fe0" id="r_aa51e79f4ea49835f825b929b12238fe0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa51e79f4ea49835f825b929b12238fe0">handleButtonRelease</a> (xcb_generic_event_t *ev)</td></tr>
+<tr class="memdesc:aa51e79f4ea49835f825b929b12238fe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ungrabs mouse after release.  <br /></td></tr>
+<tr class="separator:aa51e79f4ea49835f825b929b12238fe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56982b0acb3b449e10b6728b13b3d162" id="r_a56982b0acb3b449e10b6728b13b3d162"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56982b0acb3b449e10b6728b13b3d162">handleEvent</a> (xcb_generic_event_t *ev)</td></tr>
 <tr class="memdesc:a56982b0acb3b449e10b6728b13b3d162"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls the corresponding handler in event_handlers.  <br /></td></tr>
 <tr class="separator:a56982b0acb3b449e10b6728b13b3d162"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,8 +156,12 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:a502c62a5c7817d977e6700fb0cb4db0e" id="r_a502c62a5c7817d977e6700fb0cb4db0e"><td class="memItemLeft" align="right" valign="top">xcb_connection_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a></td></tr>
 <tr class="separator:a502c62a5c7817d977e6700fb0cb4db0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ed5753443da750ba010718592e5c93c" id="r_a3ed5753443da750ba010718592e5c93c"><td class="memItemLeft" align="right" valign="top">xcb_screen_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ed5753443da750ba010718592e5c93c">scre</a></td></tr>
+<tr class="separator:a3ed5753443da750ba010718592e5c93c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fc72a4514bb687f716fd30d0e227014" id="r_a0fc72a4514bb687f716fd30d0e227014"><td class="memItemLeft" align="right" valign="top">xcb_drawable_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fc72a4514bb687f716fd30d0e227014">foc_win</a></td></tr>
 <tr class="separator:a0fc72a4514bb687f716fd30d0e227014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a132ed983ae3724b1f6e2c6879835b7e5" id="r_a132ed983ae3724b1f6e2c6879835b7e5"><td class="memItemLeft" align="right" valign="top">xcb_button_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a132ed983ae3724b1f6e2c6879835b7e5">last_button_pressed</a></td></tr>
+<tr class="separator:a132ed983ae3724b1f6e2c6879835b7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ca51d696b19a92f01229309dd890767" id="r_a4ca51d696b19a92f01229309dd890767"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a2441cf9978403bb5deada7bb66e8d365">event_handler_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ca51d696b19a92f01229309dd890767">event_handlers</a> [<a class="el" href="#a97db5f885745464c656ec24703f44675">HANDLER_COUNT</a>]</td></tr>
 <tr class="separator:a4ca51d696b19a92f01229309dd890767"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -194,6 +204,76 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a6163226ea35fd631cb3240dd1f68566b" name="a6163226ea35fd631cb3240dd1f68566b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6163226ea35fd631cb3240dd1f68566b">&#9670;&#160;</a></span>handleButtonPress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void handleButtonPress </td>
+          <td>(</td>
+          <td class="paramtype">xcb_generic_event_t *</td>          <td class="paramname"><span class="paramname"><em>ev</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Focuses window and sets it up for movement. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ev</td><td>A button press event </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00112">112</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
+
+</div>
+</div>
+<a id="aa51e79f4ea49835f825b929b12238fe0" name="aa51e79f4ea49835f825b929b12238fe0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa51e79f4ea49835f825b929b12238fe0">&#9670;&#160;</a></span>handleButtonRelease()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void handleButtonRelease </td>
+          <td>(</td>
+          <td class="paramtype">xcb_generic_event_t *</td>          <td class="paramname"><span class="paramname"><em>ev</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ungrabs mouse after release. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ev</td><td>Unused </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00131">131</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
+
+</div>
+</div>
 <a id="a56982b0acb3b449e10b6728b13b3d162" name="a56982b0acb3b449e10b6728b13b3d162"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a56982b0acb3b449e10b6728b13b3d162">&#9670;&#160;</a></span>handleEvent()</h2>
 
@@ -217,7 +297,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00040">40</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00047">47</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
 
 </div>
 </div>
@@ -252,7 +332,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00058">58</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00065">65</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
 
 </div>
 </div>
@@ -287,7 +367,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00090">90</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00097">97</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
 
 </div>
 </div>
@@ -322,7 +402,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00077">77</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00084">84</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
 
 </div>
 </div>
@@ -375,12 +455,16 @@ Variables</h2></td></tr>
 <div class="line">        [XCB_KEY_PRESS]      = <a class="code hl_function" href="#a57175c42f21412727c7a4222999e4b49">handleKeyPress</a>,</div>
 <div class="line">        [XCB_MAP_REQUEST]    = <a class="code hl_function" href="#a2ba5f74c7bc352faced360ccb95ae597">handleMapRequest</a>,</div>
 <div class="line">        [XCB_MAP_NOTIFY]     = <a class="code hl_function" href="#a875581a1c3b57782ae3e8bafbc7866b6">handleMapNotify</a>,</div>
+<div class="line">        [XCB_BUTTON_PRESS]   = <a class="code hl_function" href="#a6163226ea35fd631cb3240dd1f68566b">handleButtonPress</a>,</div>
+<div class="line">        [XCB_BUTTON_RELEASE] = <a class="code hl_function" href="#aa51e79f4ea49835f825b929b12238fe0">handleButtonRelease</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="aevents_8c_html_a2ba5f74c7bc352faced360ccb95ae597"><div class="ttname"><a href="#a2ba5f74c7bc352faced360ccb95ae597">handleMapRequest</a></div><div class="ttdeci">static void handleMapRequest(xcb_generic_event_t *ev)</div><div class="ttdoc">Maps a window to the screen.</div><div class="ttdef"><b>Definition</b> <a href="events_8c_source.html#l00077">events.c:77</a></div></div>
-<div class="ttc" id="aevents_8c_html_a57175c42f21412727c7a4222999e4b49"><div class="ttname"><a href="#a57175c42f21412727c7a4222999e4b49">handleKeyPress</a></div><div class="ttdeci">static void handleKeyPress(xcb_generic_event_t *ev)</div><div class="ttdoc">Calls corresponding keybind in keys.</div><div class="ttdef"><b>Definition</b> <a href="events_8c_source.html#l00058">events.c:58</a></div></div>
-<div class="ttc" id="aevents_8c_html_a875581a1c3b57782ae3e8bafbc7866b6"><div class="ttname"><a href="#a875581a1c3b57782ae3e8bafbc7866b6">handleMapNotify</a></div><div class="ttdeci">static void handleMapNotify(xcb_generic_event_t *ev)</div><div class="ttdoc">Give newly mapped windows focus.</div><div class="ttdef"><b>Definition</b> <a href="events_8c_source.html#l00090">events.c:90</a></div></div>
+<div class="ttc" id="aevents_8c_html_a2ba5f74c7bc352faced360ccb95ae597"><div class="ttname"><a href="#a2ba5f74c7bc352faced360ccb95ae597">handleMapRequest</a></div><div class="ttdeci">static void handleMapRequest(xcb_generic_event_t *ev)</div><div class="ttdoc">Maps a window to the screen.</div><div class="ttdef"><b>Definition</b> <a href="events_8c_source.html#l00084">events.c:84</a></div></div>
+<div class="ttc" id="aevents_8c_html_a57175c42f21412727c7a4222999e4b49"><div class="ttname"><a href="#a57175c42f21412727c7a4222999e4b49">handleKeyPress</a></div><div class="ttdeci">static void handleKeyPress(xcb_generic_event_t *ev)</div><div class="ttdoc">Calls corresponding keybind in keys.</div><div class="ttdef"><b>Definition</b> <a href="events_8c_source.html#l00065">events.c:65</a></div></div>
+<div class="ttc" id="aevents_8c_html_a6163226ea35fd631cb3240dd1f68566b"><div class="ttname"><a href="#a6163226ea35fd631cb3240dd1f68566b">handleButtonPress</a></div><div class="ttdeci">static void handleButtonPress(xcb_generic_event_t *ev)</div><div class="ttdoc">Focuses window and sets it up for movement.</div><div class="ttdef"><b>Definition</b> <a href="events_8c_source.html#l00112">events.c:112</a></div></div>
+<div class="ttc" id="aevents_8c_html_a875581a1c3b57782ae3e8bafbc7866b6"><div class="ttname"><a href="#a875581a1c3b57782ae3e8bafbc7866b6">handleMapNotify</a></div><div class="ttdeci">static void handleMapNotify(xcb_generic_event_t *ev)</div><div class="ttdoc">Give newly mapped windows focus.</div><div class="ttdef"><b>Definition</b> <a href="events_8c_source.html#l00097">events.c:97</a></div></div>
+<div class="ttc" id="aevents_8c_html_aa51e79f4ea49835f825b929b12238fe0"><div class="ttname"><a href="#aa51e79f4ea49835f825b929b12238fe0">handleButtonRelease</a></div><div class="ttdeci">static void handleButtonRelease(xcb_generic_event_t *ev)</div><div class="ttdoc">Ungrabs mouse after release.</div><div class="ttdef"><b>Definition</b> <a href="events_8c_source.html#l00131">events.c:131</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00034">34</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00039">39</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
 
 </div>
 </div>
@@ -406,6 +490,47 @@ Variables</h2></td></tr>
 <p>current focused window, might not be accurate </p>
 
 <p class="definition">Definition at line <a class="el" href="state_8c_source.html#l00015">15</a> of file <a class="el" href="state_8c_source.html">state.c</a>.</p>
+
+</div>
+</div>
+<a id="a132ed983ae3724b1f6e2c6879835b7e5" name="a132ed983ae3724b1f6e2c6879835b7e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a132ed983ae3724b1f6e2c6879835b7e5">&#9670;&#160;</a></span>last_button_pressed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">xcb_button_t last_button_pressed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="events_8c_source.html#l00037">37</a> of file <a class="el" href="events_8c_source.html">events.c</a>.</p>
+
+</div>
+</div>
+<a id="a3ed5753443da750ba010718592e5c93c" name="a3ed5753443da750ba010718592e5c93c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ed5753443da750ba010718592e5c93c">&#9670;&#160;</a></span>scre</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">xcb_screen_t* scre</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>the xcb screen </p>
+
+<p class="definition">Definition at line <a class="el" href="state_8c_source.html#l00013">13</a> of file <a class="el" href="state_8c_source.html">state.c</a>.</p>
 
 </div>
 </div>

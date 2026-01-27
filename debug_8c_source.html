@@ -160,41 +160,44 @@ $(function(){initNavTree('debug_8c_source.html',''); initResizable(true); });
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        fprintf(<a class="code hl_variable" href="debug_8c.html#a12b44d385fe1d1ec176c193744022600">LOG_FILE</a>,<span class="stringliteral">&quot;[%s]&quot;</span>, stamp);</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="comment">// print type of message, e.g. MSG or ERR</span></div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        fprintf(<a class="code hl_variable" href="debug_8c.html#a12b44d385fe1d1ec176c193744022600">LOG_FILE</a>, <span class="stringliteral">&quot; %s: &quot;</span>, type);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="comment">//print the message</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="comment">// print the message</span></div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        vfprintf(<a class="code hl_variable" href="debug_8c.html#a12b44d385fe1d1ec176c193744022600">LOG_FILE</a>, msg, args);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>}</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="comment">// make sure the log file updates immediately</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="comment">// only updates after program close otherwise</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        fflush(<a class="code hl_variable" href="debug_8c.html#a12b44d385fe1d1ec176c193744022600">LOG_FILE</a>);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
 </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">// see debug.h</span></div>
-<div class="foldopen" id="foldopen00084" data-start="{" data-end="}">
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="debug_8c.html#ae73e6af31920372e927584b01a4a66f9">   84</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="debug_8c.html#ae73e6af31920372e927584b01a4a66f9">logMessage</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *msg, <span class="keywordtype">int</span> n, ...){</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        va_list args;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        va_start(args, n);</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="comment">// print to stdout</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        printf(msg, args);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="comment">//log to file with type MSG</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <a class="code hl_function" href="debug_8c.html#a9fefe4599aa30d8b38a13c41e7f68825">flog</a>(<span class="stringliteral">&quot;MSG&quot;</span>, msg, args);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        va_end(args);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>}</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">// see debug.h</span></div>
+<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="debug_8c.html#ae73e6af31920372e927584b01a4a66f9">   87</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="debug_8c.html#ae73e6af31920372e927584b01a4a66f9">logMessage</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *msg, <span class="keywordtype">int</span> n, ...){</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        va_list args;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        va_start(args, n);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="comment">// print to stdout</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        printf(msg, args);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="comment">//log to file with type MSG</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <a class="code hl_function" href="debug_8c.html#a9fefe4599aa30d8b38a13c41e7f68825">flog</a>(<span class="stringliteral">&quot;MSG&quot;</span>, msg, args);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        va_end(args);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
 </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">// see debug.h</span></div>
-<div class="foldopen" id="foldopen00095" data-start="{" data-end="}">
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="debug_8c.html#a95ace5b5415a1deacf7d2ab72433b061">   95</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="debug_8c.html#a95ace5b5415a1deacf7d2ab72433b061">logError</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *msg, <span class="keywordtype">int</span> n, ...){</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        va_list args;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        va_start(args, n);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="comment">// print to stderr</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        fprintf(stderr, msg, args);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="comment">// log to file with type ERR</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <a class="code hl_function" href="debug_8c.html#a9fefe4599aa30d8b38a13c41e7f68825">flog</a>(<span class="stringliteral">&quot;ERR&quot;</span>, msg, args);</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        va_end(args);</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>}</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">// see debug.h</span></div>
+<div class="foldopen" id="foldopen00098" data-start="{" data-end="}">
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="debug_8c.html#a95ace5b5415a1deacf7d2ab72433b061">   98</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="debug_8c.html#a95ace5b5415a1deacf7d2ab72433b061">logError</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *msg, <span class="keywordtype">int</span> n, ...){</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        va_list args;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        va_start(args, n);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="comment">// print to stderr</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        fprintf(stderr, msg, args);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="comment">// log to file with type ERR</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <a class="code hl_function" href="debug_8c.html#a9fefe4599aa30d8b38a13c41e7f68825">flog</a>(<span class="stringliteral">&quot;ERR&quot;</span>, msg, args);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        va_end(args);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
 </div>
 <div class="ttc" id="adebug_8c_html_a12b44d385fe1d1ec176c193744022600"><div class="ttname"><a href="debug_8c.html#a12b44d385fe1d1ec176c193744022600">LOG_FILE</a></div><div class="ttdeci">static FILE * LOG_FILE</div><div class="ttdef"><b>Definition</b> <a href="#l00017">debug.c:17</a></div></div>
 <div class="ttc" id="adebug_8c_html_a46e0346af344f7fdc6dd61a2d9628c46"><div class="ttname"><a href="debug_8c.html#a46e0346af344f7fdc6dd61a2d9628c46">openLog</a></div><div class="ttdeci">bool openLog()</div><div class="ttdoc">Opens a log file called onyxwm.log.</div><div class="ttdef"><b>Definition</b> <a href="#l00028">debug.c:28</a></div></div>
-<div class="ttc" id="adebug_8c_html_a95ace5b5415a1deacf7d2ab72433b061"><div class="ttname"><a href="debug_8c.html#a95ace5b5415a1deacf7d2ab72433b061">logError</a></div><div class="ttdeci">void logError(const char *msg, int n,...)</div><div class="ttdoc">Logs a message to stderr and log file.</div><div class="ttdef"><b>Definition</b> <a href="#l00095">debug.c:95</a></div></div>
+<div class="ttc" id="adebug_8c_html_a95ace5b5415a1deacf7d2ab72433b061"><div class="ttname"><a href="debug_8c.html#a95ace5b5415a1deacf7d2ab72433b061">logError</a></div><div class="ttdeci">void logError(const char *msg, int n,...)</div><div class="ttdoc">Logs a message to stderr and log file.</div><div class="ttdef"><b>Definition</b> <a href="#l00098">debug.c:98</a></div></div>
 <div class="ttc" id="adebug_8c_html_a9fefe4599aa30d8b38a13c41e7f68825"><div class="ttname"><a href="debug_8c.html#a9fefe4599aa30d8b38a13c41e7f68825">flog</a></div><div class="ttdeci">void flog(char *type, const char *msg, va_list args)</div><div class="ttdoc">Log a message to the log file.</div><div class="ttdef"><b>Definition</b> <a href="#l00069">debug.c:69</a></div></div>
-<div class="ttc" id="adebug_8c_html_ae73e6af31920372e927584b01a4a66f9"><div class="ttname"><a href="debug_8c.html#ae73e6af31920372e927584b01a4a66f9">logMessage</a></div><div class="ttdeci">void logMessage(const char *msg, int n,...)</div><div class="ttdoc">Logs a message to stdout and log file.</div><div class="ttdef"><b>Definition</b> <a href="#l00084">debug.c:84</a></div></div>
+<div class="ttc" id="adebug_8c_html_ae73e6af31920372e927584b01a4a66f9"><div class="ttname"><a href="debug_8c.html#ae73e6af31920372e927584b01a4a66f9">logMessage</a></div><div class="ttdeci">void logMessage(const char *msg, int n,...)</div><div class="ttdoc">Logs a message to stdout and log file.</div><div class="ttdef"><b>Definition</b> <a href="#l00087">debug.c:87</a></div></div>
 <div class="ttc" id="adebug_8h_html"><div class="ttname"><a href="debug_8h.html">debug.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
