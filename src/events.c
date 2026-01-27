@@ -3,9 +3,9 @@
  * @brief Handles events
  */
 
+#include <xcb/xcb.h>
 #include <xcb/xproto.h>   // X protocol types and constants (MapRequest, KeyPress, etc.)
 #include <xcb/xcb_event.h> // Event helpers
-#include <stdio.h>        // printf, fprintf
 
 #include "events.h"
 #include "debug.h"
@@ -27,14 +27,21 @@ typedef void (*event_handler_t)(xcb_generic_event_t *);
 static void handleKeyPress(xcb_generic_event_t *ev);
 static void handleMapRequest(xcb_generic_event_t *ev);
 static void handleMapNotify(xcb_generic_event_t *ev);
+static void handleButtonPress(xcb_generic_event_t *ev);
+static void handleButtonRelease(xcb_generic_event_t *ev);
 
 extern xcb_connection_t *dpy;
+extern xcb_screen_t *scre;
 extern xcb_drawable_t foc_win;
+// needed to keep track of last button pressed for window movement
+xcb_button_t last_button_pressed;
 //define an array of event handlers; the xcb event code has a corresponding entry for the function
 static event_handler_t event_handlers[HANDLER_COUNT] = {
 	[XCB_KEY_PRESS]      = handleKeyPress,
 	[XCB_MAP_REQUEST]    = handleMapRequest,
 	[XCB_MAP_NOTIFY]     = handleMapNotify,
+	[XCB_BUTTON_PRESS]   = handleButtonPress,
+	[XCB_BUTTON_RELEASE] = handleButtonRelease,
 };
 
 void handleEvent(xcb_generic_event_t *ev){
@@ -95,4 +102,33 @@ static void handleMapNotify(xcb_generic_event_t *ev){
 	raiseWin(e->window);
 	focusInput(foc_win);
 	xcb_flush(dpy);
+}
+
+/**
+ * @brief Focuses window and sets it up for movement
+ *
+ * @param ev A button press event
+ */
+static void handleButtonPress(xcb_generic_event_t *ev){
+	xcb_button_press_event_t *e = (xcb_button_press_event_t *) ev;
+	// redundant, but would cause weird behavior if not synced
+	foc_win = e->child;
+	raiseWin(e->child);
+	// pointer needs to be grabbed for window movement
+	xcb_grab_pointer(dpy,0, scre->root, XCB_EVENT_MASK_BUTTON_RELEASE
+		  | XCB_EVENT_MASK_BUTTON_MOTION | XCB_EVENT_MASK_POINTER_MOTION_HINT,
+		  XCB_GRAB_MODE_ASYNC, XCB_GRAB_MODE_ASYNC,
+		  scre->root, XCB_NONE, XCB_CURRENT_TIME);
+	last_button_pressed = e->detail;
+	xcb_flush(dpy);
+}
+
+/**
+ * @brief Ungrabs mouse after release
+ *
+ * @param ev Unused
+ */
+static void handleButtonRelease(xcb_generic_event_t *ev){
+	(void)ev;
+	xcb_ungrab_pointer(dpy, XCB_CURRENT_TIME);
 }
