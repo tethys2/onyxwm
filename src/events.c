@@ -30,6 +30,7 @@ static void handleMapNotify(xcb_generic_event_t *ev);
 static void handleButtonPress(xcb_generic_event_t *ev);
 static void handleButtonRelease(xcb_generic_event_t *ev);
 static void handleMotionNotify(xcb_generic_event_t *ev);
+static void handleEnterNotify(xcb_generic_event_t *ev);
 
 extern xcb_connection_t *dpy;
 extern xcb_screen_t *scre;
@@ -44,6 +45,7 @@ static event_handler_t event_handlers[HANDLER_COUNT] = {
 	[XCB_BUTTON_PRESS]   = handleButtonPress,
 	[XCB_BUTTON_RELEASE] = handleButtonRelease,
 	[XCB_MOTION_NOTIFY]  = handleMotionNotify,
+	[XCB_ENTER_NOTIFY]   = handleEnterNotify,
 };
 
 void handleEvent(xcb_generic_event_t *ev){
@@ -135,6 +137,11 @@ static void handleButtonRelease(xcb_generic_event_t *ev){
 	xcb_ungrab_pointer(dpy, XCB_CURRENT_TIME);
 }
 
+/**
+ * @brief Move and resize windows
+ *
+ * @param ev A motion notify event
+ */
 static void handleMotionNotify(xcb_generic_event_t *ev){
 	(void)ev;
 	// needed to get pointer coordinates
@@ -151,4 +158,15 @@ static void handleMotionNotify(xcb_generic_event_t *ev){
 			      | XCB_CONFIG_WINDOW_Y, geometry_buf);
 	}
 	xcb_flush(dpy);
+}
+
+/**
+ * @brief Focuses entered window
+ *
+ * @param ev An enter notify event
+ */
+static void handleEnterNotify(xcb_generic_event_t *ev){
+	xcb_enter_notify_event_t *e = (xcb_enter_notify_event_t *) ev;
+	foc_win = e->event;
+	focusInput(e->event);
 }
