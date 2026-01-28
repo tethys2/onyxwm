@@ -29,6 +29,7 @@ static void handleMapRequest(xcb_generic_event_t *ev);
 static void handleMapNotify(xcb_generic_event_t *ev);
 static void handleButtonPress(xcb_generic_event_t *ev);
 static void handleButtonRelease(xcb_generic_event_t *ev);
+static void handleMotionNotify(xcb_generic_event_t *ev);
 
 extern xcb_connection_t *dpy;
 extern xcb_screen_t *scre;
@@ -42,6 +43,7 @@ static event_handler_t event_handlers[HANDLER_COUNT] = {
 	[XCB_MAP_NOTIFY]     = handleMapNotify,
 	[XCB_BUTTON_PRESS]   = handleButtonPress,
 	[XCB_BUTTON_RELEASE] = handleButtonRelease,
+	[XCB_MOTION_NOTIFY]  = handleMotionNotify,
 };
 
 void handleEvent(xcb_generic_event_t *ev){
@@ -131,4 +133,22 @@ static void handleButtonPress(xcb_generic_event_t *ev){
 static void handleButtonRelease(xcb_generic_event_t *ev){
 	(void)ev;
 	xcb_ungrab_pointer(dpy, XCB_CURRENT_TIME);
+}
+
+static void handleMotionNotify(xcb_generic_event_t *ev){
+	(void)ev;
+	// needed to get pointer coordinates
+	// send request for pointer
+	xcb_query_pointer_cookie_t cookie = xcb_query_pointer(dpy, scre->root);
+	// receive request for pointer
+	xcb_query_pointer_reply_t *pointer = xcb_query_pointer_reply(dpy, cookie, 0);
+	// left mouse button
+	if((last_button_pressed = (xcb_button_t)(1)) && (foc_win != 0)){
+		// store x, y coords
+		uint32_t geometry_buf[2] = {pointer->root_x, pointer->root_y};
+		// update window coordinates
+		xcb_configure_window(dpy, foc_win, XCB_CONFIG_WINDOW_X
+			      | XCB_CONFIG_WINDOW_Y, geometry_buf);
+	}
+	xcb_flush(dpy);
 }
