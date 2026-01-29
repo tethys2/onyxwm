@@ -43,9 +43,14 @@ int main(void) {
 
 	// We must ask to receive SubstructureRedirect events on the root window.
 	// Only one client can do this at a time. If this fails, another WM is running.
-	uint32_t event_mask = XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT |
-			XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY |
-			XCB_EVENT_MASK_KEY_PRESS;
+	uint32_t event_mask = XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT | // exclusive to wm
+			XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY | // basic features
+			XCB_EVENT_MASK_KEY_PRESS | // XCB_KEY_PRESS
+			XCB_EVENT_MASK_PROPERTY_CHANGE | // for focus and updates window states
+			XCB_EVENT_MASK_BUTTON_PRESS | // XCB_BUTTON_PRESS
+			XCB_EVENT_MASK_BUTTON_RELEASE | // XCB_BUTTON_RELEASE
+			XCB_EVENT_MASK_POINTER_MOTION | // XCB_MOTION_NOTIFY
+			XCB_EVENT_MASK_ENTER_WINDOW; // ENTER_NOTIFY
 	// Set the event mask on the root window (checked call so we can verify success)
 	xcb_void_cookie_t cookie = xcb_change_window_attributes_checked(
 		dpy, root, XCB_CW_EVENT_MASK, &event_mask

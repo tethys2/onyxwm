@@ -134,7 +134,11 @@ static void handleButtonPress(xcb_generic_event_t *ev){
  */
 static void handleButtonRelease(xcb_generic_event_t *ev){
 	(void)ev;
+	// force window move to stop working
+	last_button_pressed = 0;
+	//standard ungrab
 	xcb_ungrab_pointer(dpy, XCB_CURRENT_TIME);
+	xcb_flush(dpy);
 }
 
 /**
@@ -150,7 +154,7 @@ static void handleMotionNotify(xcb_generic_event_t *ev){
 	// receive request for pointer
 	xcb_query_pointer_reply_t *pointer = xcb_query_pointer_reply(dpy, cookie, 0);
 	// left mouse button
-	if((last_button_pressed = (xcb_button_t)(1)) && (foc_win != 0)){
+	if((last_button_pressed == (xcb_button_t)(1)) && (foc_win != 0)){
 		// store x, y coords
 		uint32_t geometry_buf[2] = {pointer->root_x, pointer->root_y};
 		// update window coordinates
@@ -168,5 +172,6 @@ static void handleMotionNotify(xcb_generic_event_t *ev){
 static void handleEnterNotify(xcb_generic_event_t *ev){
 	xcb_enter_notify_event_t *e = (xcb_enter_notify_event_t *) ev;
 	foc_win = e->event;
-	focusInput(e->event);
+	focusInput(foc_win);
+	xcb_flush(dpy);
 }
