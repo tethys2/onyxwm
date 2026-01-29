@@ -104,6 +104,9 @@ static void handleMapNotify(xcb_generic_event_t *ev){
 	// focus the window which notified
 	foc_win = e->window;
 	raiseWin(e->window);
+	// without changing event mask the wm won't get enter notify, focusin, or focusout events
+	uint32_t event_mask = XCB_EVENT_MASK_ENTER_WINDOW | XCB_EVENT_MASK_FOCUS_CHANGE;
+	xcb_change_window_attributes_checked(dpy, e->window, XCB_CW_EVENT_MASK, &event_mask);
 	focusInput(foc_win);
 	xcb_flush(dpy);
 }
@@ -117,6 +120,7 @@ static void handleButtonPress(xcb_generic_event_t *ev){
 	xcb_button_press_event_t *e = (xcb_button_press_event_t *) ev;
 	// redundant, but would cause weird behavior if not synced
 	foc_win = e->child;
+	focusInput(foc_win);
 	raiseWin(e->child);
 	// pointer needs to be grabbed for window movement
 	xcb_grab_pointer(dpy,0, scre->root, XCB_EVENT_MASK_BUTTON_RELEASE
