@@ -133,12 +133,17 @@ static void handleButtonPress(xcb_generic_event_t *ev){
 	// e-> event_x and e_event_y for some reason don't give relative coords right
 	// so we have to do them ourselves
 	// this gets use the window geometry
-	xcb_get_geometry_cookie_t geometry_temp = xcb_get_geometry(dpy, e->child);
-	xcb_get_geometry_reply_t *geometry = xcb_get_geometry_reply(dpy, geometry_temp, NULL);
+	xcb_get_geometry_cookie_t win_geometry_temp = xcb_get_geometry(dpy, e->child);
+	xcb_get_geometry_reply_t *win_geometry = xcb_get_geometry_reply(dpy, win_geometry_temp, NULL);
 	// note: root_x and root_y represent the relative curser position
-	if(geometry){
-		window_offset.x = e->root_x - geometry->x;
-		window_offset.y = e->root_y - geometry->y;
+	if(win_geometry){
+		window_offset.x = e->root_x - win_geometry->x;
+		window_offset.y = e->root_y - win_geometry->y;
+		// cursor needs to be moved to corner on right click
+		if((last_button_pressed == (xcb_button_t)(3)) && (foc_win != 0)){
+			xcb_warp_pointer(dpy, XCB_NONE, foc_win, 0, 0, 0, 0,
+		    		win_geometry->width, win_geometry->height);
+		}
 	}
 	xcb_flush(dpy);
 }
@@ -179,6 +184,18 @@ static void handleMotionNotify(xcb_generic_event_t *ev){
 		// update window coordinates
 		xcb_configure_window(dpy, foc_win, XCB_CONFIG_WINDOW_X
 			      | XCB_CONFIG_WINDOW_Y, geometry_buf);
+	}
+	// right mouse button
+	else if((last_button_pressed == (xcb_button_t)(3)) && (foc_win != 0)){
+		// get window properties
+		xcb_get_geometry_cookie_t win_geometry_temp = xcb_get_geometry(dpy, foc_win);
+		xcb_get_geometry_reply_t *win_geometry = xcb_get_geometry_reply(dpy, win_geometry_temp, NULL);
+		// prevent negative dimension windows
+		if(pointer->root_x >= win_geometry->x && pointer->root_y >= win_geometry->y){
+			uint32_t geometry_buf[2] = {pointer->root_x - win_geometry->x, pointer->root_y - win_geometry->y};
+			xcb_configure_window(dpy, foc_win, XCB_CONFIG_WINDOW_WIDTH
+				| XCB_CONFIG_WINDOW_HEIGHT, geometry_buf);
+		}
 	}
 	xcb_flush(dpy);
 }
