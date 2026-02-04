@@ -21,4 +21,10 @@ typedef struct {
 	const arg_t arg; // argument for function
 } keybinding_t;
 
+// coordinate
+typedef struct {
+	uint32_t x;
+	uint32_t y;
+} coord_t;
+
 #endif

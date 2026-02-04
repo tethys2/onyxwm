@@ -36,7 +36,9 @@ extern xcb_connection_t *dpy;
 extern xcb_screen_t *scre;
 extern xcb_drawable_t foc_win;
 // needed to keep track of last button pressed for window movement
-xcb_button_t last_button_pressed;
+static xcb_button_t last_button_pressed;
+// needed so that the window doesn't teleport
+static coord_t window_offset = {.x = 0, .y = 0};
 //define an array of event handlers; the xcb event code has a corresponding entry for the function
 static event_handler_t event_handlers[HANDLER_COUNT] = {
 	[XCB_KEY_PRESS]      = handleKeyPress,
@@ -128,6 +130,16 @@ static void handleButtonPress(xcb_generic_event_t *ev){
 		  XCB_GRAB_MODE_ASYNC, XCB_GRAB_MODE_ASYNC,
 		  scre->root, XCB_NONE, XCB_CURRENT_TIME);
 	last_button_pressed = e->detail;
+	// e-> event_x and e_event_y for some reason don't give relative coords right
+	// so we have to do them ourselves
+	// this gets use the window geometry
+	xcb_get_geometry_cookie_t geometry_temp = xcb_get_geometry(dpy, e->child);
+	xcb_get_geometry_reply_t *geometry = xcb_get_geometry_reply(dpy, geometry_temp, NULL);
+	// note: root_x and root_y represent the relative curser position
+	if(geometry){
+		window_offset.x = e->root_x - geometry->x;
+		window_offset.y = e->root_y - geometry->y;
+	}
 	xcb_flush(dpy);
 }
 
@@ -148,6 +160,9 @@ static void handleButtonRelease(xcb_generic_event_t *ev){
 /**
  * @brief Move and resize windows
  *
+ * A motion notify event occurs when the mouse moves and is grabbed
+ * This should only happen while mod key is pressed
+ *
  * @param ev A motion notify event
  */
 static void handleMotionNotify(xcb_generic_event_t *ev){
@@ -159,8 +174,8 @@ static void handleMotionNotify(xcb_generic_event_t *ev){
 	xcb_query_pointer_reply_t *pointer = xcb_query_pointer_reply(dpy, cookie, 0);
 	// left mouse button
 	if((last_button_pressed == (xcb_button_t)(1)) && (foc_win != 0)){
-		// store x, y coords
-		uint32_t geometry_buf[2] = {pointer->root_x, pointer->root_y};
+		// new x,y coord based of off offset and curser position
+		uint32_t geometry_buf[2] = {pointer->root_x - window_offset.x, pointer->root_y - window_offset.y};
 		// update window coordinates
 		xcb_configure_window(dpy, foc_win, XCB_CONFIG_WINDOW_X
 			      | XCB_CONFIG_WINDOW_Y, geometry_buf);
