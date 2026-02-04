@@ -106,6 +106,7 @@ $(function(){initNavTree('state_8c.html',''); initResizable(true); });
 <p>stores program wide variables  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;xcb/xcb.h&gt;</code><br />
+<code>#include &lt;xcb/xcb_cursor.h&gt;</code><br />
 </div>
 <p><a href="state_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -117,6 +118,10 @@ Variables</h2></td></tr>
 <tr class="separator:a3ed5753443da750ba010718592e5c93c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fc72a4514bb687f716fd30d0e227014" id="r_a0fc72a4514bb687f716fd30d0e227014"><td class="memItemLeft" align="right" valign="top">xcb_drawable_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fc72a4514bb687f716fd30d0e227014">foc_win</a></td></tr>
 <tr class="separator:a0fc72a4514bb687f716fd30d0e227014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72eb56534f7379eb8e5716a00c0d97af" id="r_a72eb56534f7379eb8e5716a00c0d97af"><td class="memItemLeft" align="right" valign="top">xcb_cursor_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72eb56534f7379eb8e5716a00c0d97af">cursor</a></td></tr>
+<tr class="separator:a72eb56534f7379eb8e5716a00c0d97af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d4d323c3e7a6a25c178af30a9c4e4bd" id="r_a8d4d323c3e7a6a25c178af30a9c4e4bd"><td class="memItemLeft" align="right" valign="top">xcb_cursor_context_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d4d323c3e7a6a25c178af30a9c4e4bd">cursor_context</a></td></tr>
+<tr class="separator:a8d4d323c3e7a6a25c178af30a9c4e4bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>stores program wide variables </p>
@@ -124,6 +129,40 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition in file <a class="el" href="state_8c_source.html">state.c</a>.</p>
 </div><h2 class="groupheader">Variable Documentation</h2>
+<a id="a72eb56534f7379eb8e5716a00c0d97af" name="a72eb56534f7379eb8e5716a00c0d97af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72eb56534f7379eb8e5716a00c0d97af">&#9670;&#160;</a></span>cursor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">xcb_cursor_t cursor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>current cursor, visual </p>
+
+<p class="definition">Definition at line <a class="el" href="state_8c_source.html#l00017">17</a> of file <a class="el" href="state_8c_source.html">state.c</a>.</p>
+
+</div>
+</div>
+<a id="a8d4d323c3e7a6a25c178af30a9c4e4bd" name="a8d4d323c3e7a6a25c178af30a9c4e4bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d4d323c3e7a6a25c178af30a9c4e4bd">&#9670;&#160;</a></span>cursor_context</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">xcb_cursor_context_t* cursor_context</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>needed to set cursor </p>
+
+<p class="definition">Definition at line <a class="el" href="state_8c_source.html#l00019">19</a> of file <a class="el" href="state_8c_source.html">state.c</a>.</p>
+
+</div>
+</div>
 <a id="a502c62a5c7817d977e6700fb0cb4db0e" name="a502c62a5c7817d977e6700fb0cb4db0e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a502c62a5c7817d977e6700fb0cb4db0e">&#9670;&#160;</a></span>dpy</h2>
 

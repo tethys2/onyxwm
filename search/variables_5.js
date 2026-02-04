@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['keys_0',['keys',['../keybindings_8h.html#a585ea26f1ad875115987569eabcbd2a0',1,'keybindings.h']]],
-  ['keysym_1',['keysym',['../structkeybinding__t.html#a6f3715553b53629acd73d21a39344512',1,'keybinding_t']]]
+  ['i_0',['i',['../unionarg__t.html#ab145f5e5dcd3b664b6823213b4a75d72',1,'arg_t']]]
 ];

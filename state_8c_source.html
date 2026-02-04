@@ -103,13 +103,17 @@ $(function(){initNavTree('state_8c_source.html',''); initResizable(true); });
 <a href="state_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;xcb/xcb.h&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;xcb/xcb_cursor.h&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="actions_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">   11</a></span>xcb_connection_t *<a class="code hl_variable" href="actions_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a>;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="events_8c.html#a3ed5753443da750ba010718592e5c93c">   13</a></span>xcb_screen_t *<a class="code hl_variable" href="events_8c.html#a3ed5753443da750ba010718592e5c93c">scre</a>;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="actions_8c.html#a0fc72a4514bb687f716fd30d0e227014">   15</a></span>xcb_drawable_t <a class="code hl_variable" href="actions_8c.html#a0fc72a4514bb687f716fd30d0e227014">foc_win</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="events_8c.html#a72eb56534f7379eb8e5716a00c0d97af">   17</a></span>xcb_cursor_t <a class="code hl_variable" href="events_8c.html#a72eb56534f7379eb8e5716a00c0d97af">cursor</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="events_8c.html#a8d4d323c3e7a6a25c178af30a9c4e4bd">   19</a></span>xcb_cursor_context_t *<a class="code hl_variable" href="events_8c.html#a8d4d323c3e7a6a25c178af30a9c4e4bd">cursor_context</a>;</div>
 <div class="ttc" id="aactions_8c_html_a0fc72a4514bb687f716fd30d0e227014"><div class="ttname"><a href="actions_8c.html#a0fc72a4514bb687f716fd30d0e227014">foc_win</a></div><div class="ttdeci">xcb_drawable_t foc_win</div><div class="ttdef"><b>Definition</b> <a href="#l00015">state.c:15</a></div></div>
 <div class="ttc" id="aactions_8c_html_a502c62a5c7817d977e6700fb0cb4db0e"><div class="ttname"><a href="actions_8c.html#a502c62a5c7817d977e6700fb0cb4db0e">dpy</a></div><div class="ttdeci">xcb_connection_t * dpy</div><div class="ttdef"><b>Definition</b> <a href="#l00011">state.c:11</a></div></div>
 <div class="ttc" id="aevents_8c_html_a3ed5753443da750ba010718592e5c93c"><div class="ttname"><a href="events_8c.html#a3ed5753443da750ba010718592e5c93c">scre</a></div><div class="ttdeci">xcb_screen_t * scre</div><div class="ttdef"><b>Definition</b> <a href="#l00013">state.c:13</a></div></div>
+<div class="ttc" id="aevents_8c_html_a72eb56534f7379eb8e5716a00c0d97af"><div class="ttname"><a href="events_8c.html#a72eb56534f7379eb8e5716a00c0d97af">cursor</a></div><div class="ttdeci">xcb_cursor_t cursor</div><div class="ttdef"><b>Definition</b> <a href="#l00017">state.c:17</a></div></div>
+<div class="ttc" id="aevents_8c_html_a8d4d323c3e7a6a25c178af30a9c4e4bd"><div class="ttname"><a href="events_8c.html#a8d4d323c3e7a6a25c178af30a9c4e4bd">cursor_context</a></div><div class="ttdeci">xcb_cursor_context_t * cursor_context</div><div class="ttdef"><b>Definition</b> <a href="#l00019">state.c:19</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
