@@ -20,6 +20,8 @@ extern xcb_screen_t *scre;
 
 extern xcb_cursor_t cursor;
 
+extern xcb_cursor_context_t *cursor_context;
+
 int main(void) {
 	// =================================================================
 	// = core setup                                                    =
@@ -84,7 +86,6 @@ int main(void) {
 
 	// set cursor to pointer glyph
 	// might want to free later
-	xcb_cursor_context_t *cursor_context;
 	xcb_cursor_context_new(dpy, scre, &cursor_context);
 	cursor = xcb_cursor_load_cursor(cursor_context, "left_ptr");
 	uint32_t attribute_buf[] = {cursor};

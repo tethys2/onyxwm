@@ -5,6 +5,7 @@
 
 #include <xcb/xcb.h>
 #include <xcb/xproto.h>   // X protocol types and constants (MapRequest, KeyPress, etc.)
+#include <xcb/xcb_cursor.h> //  cursor
 #include <xcb/xcb_event.h> // Event helpers
 
 #include "events.h"
@@ -35,6 +36,9 @@ static void handleEnterNotify(xcb_generic_event_t *ev);
 extern xcb_connection_t *dpy;
 extern xcb_screen_t *scre;
 extern xcb_drawable_t foc_win;
+extern xcb_cursor_t cursor;
+extern xcb_cursor_context_t *cursor_context;
+
 // needed to keep track of last button pressed for window movement
 static xcb_button_t last_button_pressed;
 // needed so that the window doesn't teleport
@@ -124,11 +128,6 @@ static void handleButtonPress(xcb_generic_event_t *ev){
 	foc_win = e->child;
 	focusInput(foc_win);
 	raiseWin(e->child);
-	// pointer needs to be grabbed for window movement
-	xcb_grab_pointer(dpy,0, scre->root, XCB_EVENT_MASK_BUTTON_RELEASE
-		  | XCB_EVENT_MASK_BUTTON_MOTION | XCB_EVENT_MASK_POINTER_MOTION_HINT,
-		  XCB_GRAB_MODE_ASYNC, XCB_GRAB_MODE_ASYNC,
-		  scre->root, XCB_NONE, XCB_CURRENT_TIME);
 	last_button_pressed = e->detail;
 	// e-> event_x and e_event_y for some reason don't give relative coords right
 	// so we have to do them ourselves
@@ -145,6 +144,28 @@ static void handleButtonPress(xcb_generic_event_t *ev){
 		    		win_geometry->width, win_geometry->height);
 		}
 	}
+	// set cursor
+	// left mouse button
+	if(e->child){
+		if(last_button_pressed == (xcb_button_t)(1)){
+			cursor = xcb_cursor_load_cursor(cursor_context, "fleur");
+			uint32_t attribute_buf[] = {cursor};
+			xcb_change_window_attributes(dpy, scre->root, XCB_CW_CURSOR, attribute_buf);
+		}
+		// right mouse button
+		else if(last_button_pressed == (xcb_button_t)(3)){
+			cursor = xcb_cursor_load_cursor(cursor_context, "sizing");
+			uint32_t attribute_buf[] = {cursor};
+			xcb_change_window_attributes(dpy, scre->root, XCB_CW_CURSOR, attribute_buf);
+		}
+	}
+	// pointer needs to be grabbed for window movement
+	// event masks are needed so we can get passed the events
+	// cursor is passed in to force cursor icon
+	xcb_grab_pointer(dpy,0, scre->root, XCB_EVENT_MASK_BUTTON_RELEASE
+		  | XCB_EVENT_MASK_BUTTON_MOTION | XCB_EVENT_MASK_POINTER_MOTION_HINT,
+		  XCB_GRAB_MODE_ASYNC, XCB_GRAB_MODE_ASYNC,
+		  scre->root, cursor, XCB_CURRENT_TIME);
 	xcb_flush(dpy);
 }
 
@@ -157,6 +178,10 @@ static void handleButtonRelease(xcb_generic_event_t *ev){
 	(void)ev;
 	// force window move to stop working
 	last_button_pressed = 0;
+	// make sure cursor is normal
+	cursor = xcb_cursor_load_cursor(cursor_context, "left_ptr");
+	uint32_t attribute_buf[] = {cursor};
+	xcb_change_window_attributes(dpy, scre->root, XCB_CW_CURSOR, attribute_buf);
 	//standard ungrab
 	xcb_ungrab_pointer(dpy, XCB_CURRENT_TIME);
 	xcb_flush(dpy);
