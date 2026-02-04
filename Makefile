@@ -5,7 +5,7 @@ VER = -std=gnu99
 # Compiler flags, enable verbose warnings and optimize for speed
 CFLAGS = -Wall -Wextra -O2
 # Libraries, xcb and xcb keysyms helper
-LIBS = -lxcb -lxcb-keysyms
+LIBS = -lxcb -lxcb-keysyms -lxcb-cursor
 # Files to be compiled
 SRCS = $(shell find src -name "*.c")
 # What files will be compiled into

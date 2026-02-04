@@ -1,4 +1,5 @@
 #include <xcb/xcb.h>      // XCB core header
+#include <xcb/xcb_cursor.h> // to set cursor
 #include <stdlib.h>       // exit, free
 
 #include "debug.h"
@@ -16,6 +17,8 @@
 extern xcb_connection_t *dpy;
 //xcb screen
 extern xcb_screen_t *scre;
+
+extern xcb_cursor_t cursor;
 
 int main(void) {
 	// =================================================================
@@ -78,6 +81,15 @@ int main(void) {
 	// grab mouse bindings (mod + left/right)
 	xcb_grab_button(dpy, 0, scre->root, XCB_EVENT_MASK_BUTTON_PRESS | XCB_EVENT_MASK_BUTTON_RELEASE, XCB_GRAB_MODE_ASYNC, XCB_GRAB_MODE_ASYNC, scre->root, XCB_NONE, 1, MOD);
 	xcb_grab_button(dpy, 0, scre->root, XCB_EVENT_MASK_BUTTON_PRESS | XCB_EVENT_MASK_BUTTON_RELEASE, XCB_GRAB_MODE_ASYNC, XCB_GRAB_MODE_ASYNC, scre->root, XCB_NONE, 3, MOD);
+
+	// set cursor to pointer glyph
+	// might want to free later
+	xcb_cursor_context_t *cursor_context;
+	xcb_cursor_context_new(dpy, scre, &cursor_context);
+	cursor = xcb_cursor_load_cursor(cursor_context, "left_ptr");
+	uint32_t attribute_buf[] = {cursor};
+	xcb_change_window_attributes(dpy, scre->root, XCB_CW_CURSOR, attribute_buf);
+
 	logMessage("onxyWM is running\n", 0);
 
 	// start autostart apps

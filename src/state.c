@@ -13,3 +13,5 @@ xcb_connection_t *dpy;
 xcb_screen_t *scre;
 /** current focused window, might not be accurate */
 xcb_drawable_t foc_win;
+/** current cursor, visual */
+xcb_cursor_t cursor;
