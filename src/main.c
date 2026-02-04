@@ -32,7 +32,7 @@ int main(void) {
 	dpy = xcb_connect(NULL, &screen_number);
 	// Check if the connection has an error
 	if (xcb_connection_has_error(dpy)) {
-		logError("Failed to connect to X server\n", 0);
+		logError("Failed to connect to X server\n");
 		return -1;
 	}
 	//get setup info
@@ -63,7 +63,7 @@ int main(void) {
 	// Check if the request failed (i.e., another WM is running)
 	xcb_generic_error_t *err = xcb_request_check(dpy, cookie);
 	if (err) {
-		logError("Another window manager is already running\n", 0);
+		logError("Another window manager is already running\n");
 		free(err);
 		xcb_disconnect(dpy);
 		return -1;
@@ -91,7 +91,7 @@ int main(void) {
 	uint32_t attribute_buf[] = {cursor};
 	xcb_change_window_attributes(dpy, scre->root, XCB_CW_CURSOR, attribute_buf);
 
-	logMessage("onxyWM is running\n", 0);
+	logMessage("onxyWM is running\n");
 
 	// start autostart apps
 	autostart();

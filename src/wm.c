@@ -36,10 +36,10 @@ void exitWM(int ret){
 		dpy = NULL;
 	}
 	if(!ret){
-		logMessage("Exiting onyxWM successfully\n", 1);
+		logMessage("Exiting onyxWM successfully\n");
 	}
 	else{
-		logError("Exiting onyxWM with error\n", 1);
+		logError("Exiting onyxWM with error\n");
 	}
 	//exit program with code from argument
 	exit(ret);

@@ -84,9 +84,9 @@ void flog(char *type, const char *msg, va_list args){
 }
 
 // see debug.h
-void logMessage(const char *msg, int n, ...){
+void logMessage(const char *msg, ...){
 	va_list args;
-	va_start(args, n);
+	va_start(args, msg);
 	// print to stdout
 	printf(msg, args);
 	//log to file with type MSG
@@ -95,9 +95,9 @@ void logMessage(const char *msg, int n, ...){
 }
 
 // see debug.h
-void logError(const char *msg, int n, ...){
+void logError(const char *msg, ...){
 	va_list args;
-	va_start(args, n);
+	va_start(args, msg);
 	// print to stderr
 	fprintf(stderr, msg, args);
 	// log to file with type ERR
